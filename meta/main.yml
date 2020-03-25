@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: charlesrocket
+  description: Dotfiles deployment from github
+  role_name: dotfiles
+  license: "MIT"
+  min_ansible_version: 2.3
+  platforms:
+    - name: FreeBSD
+      versions: all
+    - name: MacOSX
+      versions: all
+    - name: Debian
+      versions: all
+    - name: Ubuntu
+      versions: all  
+  galaxy_tags:
+    - dotfiles
