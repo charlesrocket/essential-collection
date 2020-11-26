@@ -26,6 +26,7 @@
   file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
+    mode: 0644
     state: link
   become: false
   with_items: "{{ dotfiles_files }}"
