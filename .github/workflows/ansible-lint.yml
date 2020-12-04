@@ -12,6 +12,6 @@ jobs:
     - name: lint ansible playbook
       uses: ansible/ansible-lint-action@master
       with:
-        targets: tasks/main.yml
+        targets: ""
         override-deps: ""
         args: ""
