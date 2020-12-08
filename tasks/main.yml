@@ -1,9 +1,5 @@
 ---
 
-- name: Ensure git is installed
-  package: name=git state=present
-  become: true
-
 - name: Check for repository
   stat:
     path: "{{ git_dotfiles_dir_dot_git }}HEAD"
