@@ -58,6 +58,7 @@
     path: "{{ git_dotfiles_alias_file }}"
     state: present
     create: yes
+    mode: u=rw,g=r,o=r
     block: |
       {{ git_dotfiles_define_alias }}
     marker: '# {mark} ANSIBLE MANAGED BLOCK jan_matthis.git_dotfiles'
