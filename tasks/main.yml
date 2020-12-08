@@ -1,32 +1,64 @@
 ---
-- name: Ensure dotfiles repository is cloned locally.
-  git:
-    repo: "{{ dotfiles_repo }}"
-    dest: "{{ dotfiles_repo_local_destination }}"
-    version: "{{ dotfiles_repo_version }}"
-    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
-  become: false
 
-- name: Ensure all configured dotfiles are links.
-  command: "ls -F {{ dotfiles_home }}/{{ item }}"
-  register: existing_dotfile_info
-  failed_when: false
-  check_mode: false
+- name: Ensure git is installed
+  package: name=git state=present
+  become: true
+
+- name: Check for repository
+  stat:
+    path: "{{ git_dotfiles_dir_dot_git }}HEAD"
+  register: git_dotfiles_head
   changed_when: false
-  with_items: "{{ dotfiles_files }}"
 
-- name: Remove existing dotfiles file if a replacement is being linked.
-  file:
-    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
-    state: absent
-  when: "'@' not in item.1.stdout"
-  with_indexed_items: "{{ existing_dotfile_info.results }}"
+- name: Clone repository  # noqa 401
+  git:
+    repo: "{{ git_dotfiles_repo }}"
+    dest: "{{ git_dotfiles_dir_dot_git }}"
+    bare: true
+  when: not git_dotfiles_head.stat.exists
 
-- name: Link dotfiles into home folder.
-  file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-    dest: "{{ dotfiles_home }}/{{ item }}"
-    mode: 0644
-    state: link
-  become: false
-  with_items: "{{ dotfiles_files }}"
+- name: Install dotfiles
+  shell: |
+    set -o pipefail
+
+    # Alias
+    shopt -s expand_aliases
+    {{ git_dotfiles_define_alias }}
+    {{ git_dotfiles_alias }} config --local status.showUntrackedFiles no
+
+    # Handle existing config
+    mkdir -p {{ git_dotfiles_dir_backup }}
+    {{ git_dotfiles_alias }} checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} dirname {} | awk {'print $1'} | xargs -I{} mkdir -p {{ git_dotfiles_dir_backup }}/{}  # noqa 204
+    {{ git_dotfiles_alias }} checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} {{ git_dotfiles_dir_backup }}/{}
+
+    # Install
+    {{ git_dotfiles_alias }} checkout
+  args:
+    chdir: "{{ git_dotfiles_dir }}"
+    creates: "{{ git_dotfiles_dir_dot_git }}"
+    executable: /bin/bash
+  when: not git_dotfiles_head.stat.exists
+
+- name: Update dotfiles
+  shell: |
+    # Alias
+    shopt -s expand_aliases
+    {{ git_dotfiles_define_alias }}
+    {{ git_dotfiles_alias }} config --local status.showUntrackedFiles no
+
+    # Update
+    {{ git_dotfiles_alias }} pull
+  args:
+    chdir: "{{ git_dotfiles_dir }}"
+    executable: /bin/bash
+  when: git_dotfiles_head.stat.exists
+
+- name: Append aliases file
+  blockinfile:
+    path: "{{ git_dotfiles_alias_file }}"
+    state: present
+    create: yes
+    block: |
+      {{ git_dotfiles_define_alias }}
+    marker: '# {mark} ANSIBLE MANAGED BLOCK jan_matthis.git_dotfiles'
+  when: git_dotfiles_alias_file | length > 0

@@ -1,13 +1,7 @@
 ---
-dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git"
-dotfiles_repo_version: master
-dotfiles_repo_accept_hostkey: false
-dotfiles_repo_local_destination: "/Users/{{ ansible_user_id }}/Documents/GitHub/dotfiles"
-
-dotfiles_home: "/Users/{{ ansible_user_id }}"
-dotfiles_files:
-  - .bash_profile
-  - .bashrc
-  - .gitconfig
-  - .gitignore
-  - .zshrc
+git_dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git"
+git_dotfiles_alias: "dfcfg"
+git_dotfiles_dir: "{{ ansible_env.HOME }}"
+git_dotfiles_dir_dot_git: "{{ ansible_env.HOME }}/.dfcfg/"
+git_dotfiles_dir_backup: "{{ ansible_env.HOME }}/.dfcfg-backup"
+git_dotfiles_alias_file: "{{ ansible_env.HOME }}/.aliases"
