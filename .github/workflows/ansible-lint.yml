@@ -9,9 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: lint ansible playbook
-      uses: ansible/ansible-lint-action@master
+    - name: lint role
+      uses: ansible/ansible-lint-action@main
       with:
-        targets: ""
-        override-deps: ""
-        args: ""
+        args: "**/*.yml"
