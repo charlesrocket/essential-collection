@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: charlesrocket
-  description: Dotfiles deployment from Git repository
+  description: Dotfiles deployment from Git repositories
   role_name: dotfiles
   license: "MIT"
   min_ansible_version: 2.5
@@ -11,8 +11,6 @@ galaxy_info:
     - name: MacOSX
       versions: all
     - name: Debian
-      versions: all
-    - name: Ubuntu
       versions: all
   galaxy_tags:
     - dotfiles
