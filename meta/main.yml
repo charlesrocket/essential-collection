@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: charlesrocket
-  description: Dotfiles deployment from github
+  description: Dotfiles deployment from Git repository
   role_name: dotfiles
   license: "MIT"
   min_ansible_version: 2.5
