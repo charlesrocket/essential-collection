@@ -30,6 +30,15 @@
   register: dotfiles_dirs
   changed_when: false
 
+- name: Get list of scripts
+  ansible.builtin.shell: 'set -o pipefail && find . -type f \( -name "*.py" -o -name "*.sh" \) | cut -c 3-'
+  args:
+    executable: /bin/sh
+    chdir: "{{ dotfiles_repo_local_destination }}"
+  register: dotfiles_scripts
+  changed_when: false
+  when: dotfiles_repo_permissions
+
 - name: Prepare directories
   ansible.builtin.file:
     dest: "{{ dotfiles_home }}/{{ item }}"
@@ -46,15 +55,6 @@
     mode: u=rw,g=r,o=r
   become: false
   with_items: "{{ dotfiles_files }}"
-
-- name: Get list of scripts
-  ansible.builtin.shell: 'set -o pipefail && find . -type f \( -name "*.py" -o -name "*.sh" \) | cut -c 3-'
-  args:
-    executable: /bin/sh
-    chdir: "{{ dotfiles_repo_local_destination }}"
-  register: dotfiles_scripts
-  changed_when: false
-  when: dotfiles_repo_permissions
 
 - name: Change permissions for scripts
   ansible.builtin.file:
