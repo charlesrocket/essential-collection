@@ -51,7 +51,7 @@
   ansible.builtin.shell: 'set -o pipefail && find . -type f \( -name "*.py" -o -name "*.sh" \) | cut -c 3-'
   args:
     executable: /bin/sh
-    chdir: "{{ dotfiles_home }}"
+    chdir: "{{ dotfiles_repo_local_destination }}"
   register: dotfiles_scripts
   changed_when: false
   when: dotfiles_repo_permissions
