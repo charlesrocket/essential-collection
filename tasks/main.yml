@@ -19,6 +19,8 @@
   ansible.builtin.file:
     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
     state: absent
+  loop_control:
+     label: "{{ dotfiles_files[item.0] }}"
   when: "'@' not in item.1.stdout"
   with_indexed_items: "{{ existing_dotfile_info.results }}"
 
