@@ -54,7 +54,7 @@
     chdir: "{{ dotfiles_home }}"
   register: dotfiles_scripts
   changed_when: false
-  when: dotfiles_permissions
+  when: dotfiles_repo_permissions
 
 - name: Change permissions for scripts
   ansible.builtin.file:
@@ -62,5 +62,5 @@
     state: link
     mode: 0755
   become: false
-  when: dotfiles_permissions
+  when: dotfiles_repo_permissions
   with_items: "{{ dotfiles_scripts.stdout_lines }}"
