@@ -2,6 +2,7 @@
 dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git"
 dotfiles_repo_version: master
 dotfiles_repo_accept_hostkey: false
+dotfiles_repo_permissions: false
 dotfiles_repo_local_destination: "~/git/dotfiles"
 
 dotfiles_home: "~"

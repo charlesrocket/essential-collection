@@ -46,3 +46,21 @@
     mode: u=rw,g=r,o=r
   become: false
   with_items: "{{ dotfiles_files }}"
+
+- name: Get list of scripts
+  ansible.builtin.shell: 'set -o pipefail && find . -type f \( -name "*.py" -o -name "*.sh" \) | cut -c 3-'
+  args:
+    executable: /bin/sh
+    chdir: "{{ dotfiles_home }}"
+  register: dotfiles_scripts
+  changed_when: false
+  when: dotfiles_permissions
+
+- name: Change permissions for scripts
+  ansible.builtin.file:
+    dest: "{{ dotfiles_home }}/{{ item }}"
+    state: link
+    mode: 0755
+  become: false
+  when: dotfiles_permissions
+  with_items: "{{ dotfiles_scripts.stdout_lines }}"
