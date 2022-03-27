@@ -8,6 +8,4 @@ dotfiles_home: "~"
 dotfiles_files:
   - .bash_profile
   - .bashrc
-  - .gitconfig
-  - .gitignore
   - .zshrc
