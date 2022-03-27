@@ -35,6 +35,7 @@
     dest: "{{ dotfiles_home }}/{{ item }}"
     state: directory
     mode: 0755
+  become: false
   with_items: "{{ dotfiles_dirs.stdout_lines }}"
 
 - name: Link dotfiles into home folder.
