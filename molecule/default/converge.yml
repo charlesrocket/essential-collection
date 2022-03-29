@@ -2,8 +2,7 @@
 
 - name: Converge
   hosts: all
-  become: true
 
   roles:
-    - role: diodonfrost.git_lfs
-    - role: charlesrocket.dotfiles
+    - {role: diodonfrost.git_lfs, become: true}
+    - {role: charlesrocket.dotfiles}
