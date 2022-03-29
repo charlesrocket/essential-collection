@@ -14,7 +14,7 @@ defaults:
 
 jobs:
   molecule:
-    name: Molecule
+    name: molecule
     runs-on: macos-10.15
     continue-on-error: true
     strategy:
