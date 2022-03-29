@@ -22,7 +22,6 @@ jobs:
         distro:
           - debian/bullseye64
           - generic/freebsd13
-          - incognia/macos12-amd64
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
