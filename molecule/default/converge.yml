@@ -2,7 +2,8 @@
 
 - name: Converge
   hosts: all
-  tasks:
-    - name: "Include charlesrocket.dotfiles"
-      include_role:
-        name: "charlesrocket.dotfiles"
+  become: true
+
+  roles:
+    - role: diodonfrost.git_lfs
+    - role: charlesrocket.dotfiles
