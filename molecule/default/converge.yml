@@ -3,6 +3,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include dotfiles_role"
+    - name: "Include charlesrocket.dotfiles"
       include_role:
         name: "charlesrocket.dotfiles"
