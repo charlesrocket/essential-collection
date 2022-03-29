@@ -1,0 +1,8 @@
+---
+
+- name: Converge
+  hosts: all
+
+  roles:
+    - {role: diodonfrost.git_lfs, become: true}
+    - {role: charlesrocket.dotfiles}
