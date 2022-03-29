@@ -1,5 +1,5 @@
 ---
-- name: Ensure dotfiles repository is cloned locally.
+- name: Ensure dotfiles repository is cloned locally
   ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local_destination }}"
@@ -8,7 +8,7 @@
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
   become: false
 
-- name: Ensure all configured dotfiles are links.
+- name: Ensure all configured dotfiles are links
   ansible.builtin.command: "ls -F {{ dotfiles_home }}/{{ item }}"
   register: existing_dotfile_info
   failed_when: false
@@ -16,7 +16,7 @@
   changed_when: false
   with_items: "{{ dotfiles_files }}"
 
-- name: Remove existing dotfiles file if a replacement is being linked.
+- name: Remove existing dotfiles file if a replacement is being linked
   ansible.builtin.file:
     path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
     state: absent
@@ -50,7 +50,7 @@
   become: false
   with_items: "{{ dotfiles_dirs.stdout_lines }}"
 
-- name: Link dotfiles into home folder.
+- name: Link dotfiles into home folder
   ansible.builtin.file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
