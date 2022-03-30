@@ -7,7 +7,5 @@ dotfiles_repo_local_destination: "~/git/dotfiles"
 
 dotfiles_home: "~"
 dotfiles_files:
-  - .config/mc/ini
-  - .bash_profile
-  - .bashrc
+  - scripts/rand-str.sh
   - .zshrc
