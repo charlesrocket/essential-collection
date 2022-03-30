@@ -4,6 +4,9 @@
 
 Deploy dotfiles from git repositories
 
+### Requirements
+`git` on managed machines
+
 ## Install
 ```
 - name: Playbook
