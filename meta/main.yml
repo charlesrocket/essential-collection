@@ -8,6 +8,8 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions: all
+    - name: OpenBSD
+      versions: all
     - name: MacOSX
       versions: all
     - name: Debian
