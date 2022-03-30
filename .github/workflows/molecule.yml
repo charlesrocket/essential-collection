@@ -1,5 +1,7 @@
 ---
 
+name: molecule
+
 'on':
   pull_request:
   push:
@@ -14,7 +16,6 @@ defaults:
 
 jobs:
   molecule:
-    name: molecule
     runs-on: macos-10.15
     continue-on-error: true
     strategy:
