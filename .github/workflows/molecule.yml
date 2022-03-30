@@ -23,6 +23,7 @@ jobs:
         distro:
           - debian/bullseye64
           - generic/freebsd13
+          - generic/openbsd7
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
