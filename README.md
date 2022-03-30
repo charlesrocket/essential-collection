@@ -1,4 +1,6 @@
 # dotfiles_role
+[![molecule](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml)
+[![ansible lint](https://github.com/charlesrocket/dotfiles_role/actions/workflows/ansible-lint.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/dotfiles_role/actions/workflows/ansible-lint.yml)
 
 Deploy dotfiles from git repositories
 
