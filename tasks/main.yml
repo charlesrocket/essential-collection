@@ -40,7 +40,6 @@
     chdir: "{{ dotfiles_repo_local_destination }}"
   register: dotfiles_scripts
   changed_when: false
-  when: dotfiles_repo_permissions
 
 - name: Prepare directories
   ansible.builtin.file:
@@ -65,5 +64,4 @@
     state: link
     mode: 0755
   become: false
-  when: dotfiles_repo_permissions
   with_items: "{{ dotfiles_scripts.stdout_lines }}"
