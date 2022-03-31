@@ -54,14 +54,6 @@
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
     state: link
-    mode: u=rw,g=r,o=r
+    mode: "{{ '0755' if item in dotfiles_scripts.stdout_lines else '0644' }}"
   become: false
   with_items: "{{ dotfiles_files }}"
-
-- name: Change permissions for scripts
-  ansible.builtin.file:
-    dest: "{{ dotfiles_home }}/{{ item }}"
-    state: link
-    mode: 0755
-  become: false
-  with_items: "{{ dotfiles_scripts.stdout_lines }}"
