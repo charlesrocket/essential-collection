@@ -25,12 +25,12 @@ jobs:
           - generic/freebsd13
           - generic/openbsd7
     steps:
-      - name: Check out the codebase.
+      - name: Check out the codebase
         uses: actions/checkout@v2
         with:
           path: 'charlesrocket.dotfiles'
 
-      - name: Set up Python 3.
+      - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -46,9 +46,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-vagrant-${{ matrix.distro }}
 
-      - name: Run Molecule tests.
+      - name: Run Molecule tests
         run: molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
+
+  release:
+    needs: molecule
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.0
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
+          git_branch: master
