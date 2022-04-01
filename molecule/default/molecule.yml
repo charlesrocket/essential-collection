@@ -32,5 +32,8 @@ provisioner:
   log: true
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  config_options:
+    defaults:
+      verbosity: ${MOLECULE_VERBOSITY:-0}
 verifier:
   name: ansible
