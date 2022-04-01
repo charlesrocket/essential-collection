@@ -49,11 +49,20 @@
   become: false
   with_items: "{{ dotfiles_dirs.stdout_lines }}"
 
-- name: Link dotfiles into home folder
+- name: Link dotfiles
   ansible.builtin.file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
     state: link
-    mode: "{{ '0755' if item in dotfiles_scripts.stdout_lines else '0644' }}"
+    mode: 0644
   become: false
-  with_items: "{{ dotfiles_files }}"
+  with_items: "{{ dotfiles_files|reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|list }}"
+
+- name: Link scripts
+  ansible.builtin.file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ dotfiles_home }}/{{ item }}"
+    state: link
+    mode: 0755
+  become: false
+  with_items: "{{ dotfiles_files|select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|list }}"
