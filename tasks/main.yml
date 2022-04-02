@@ -51,7 +51,7 @@
   become: false
   loop: "{{ dotfiles_files|reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|flatten(levels=1)|list }}"
 
-- name: Link scripts
+- name: Link dotfiles scripts
   ansible.builtin.file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
     dest: "{{ dotfiles_home }}/{{ item }}"
