@@ -14,16 +14,17 @@
   failed_when: false
   check_mode: false
   changed_when: false
-  with_items: "{{ dotfiles_files }}"
+  loop: "{{ dotfiles_files|flatten(levels=1) }}"
 
 - name: Remove existing dotfiles file if a replacement is being linked
   ansible.builtin.file:
-    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
+    path: "{{ dotfiles_home }}/{{ dotfiles_files[index] }}"
     state: absent
+  when: "'@' not in item.stdout"
+  loop: "{{ existing_dotfile_info.results|flatten(levels=1) }}"
   loop_control:
-    label: "{{ dotfiles_files[item.0] }}"
-  when: "'@' not in item.1.stdout"
-  with_indexed_items: "{{ existing_dotfile_info.results }}"
+    label: "{{ dotfiles_files[index] }}"
+    index_var: index
 
 - name: Get list of directories
   ansible.builtin.shell: set -o pipefail && find . -maxdepth 5 -type d | grep -E 'scripts|.config|.mozilla|.ansible' | cut -c 3-
@@ -39,7 +40,7 @@
     state: directory
     mode: 0755
   become: false
-  with_items: "{{ dotfiles_dirs.stdout_lines }}"
+  loop: "{{ dotfiles_dirs.stdout_lines|flatten(levels=1) }}"
 
 - name: Link dotfiles
   ansible.builtin.file:
@@ -49,7 +50,7 @@
     mode: 0644
     follow: false
   become: false
-  with_items: "{{ dotfiles_files|reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|list }}"
+  loop: "{{ dotfiles_files|reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|flatten(levels=1)|list }}"
 
 - name: Link scripts
   ansible.builtin.file:
@@ -59,4 +60,4 @@
     mode: 0755
     follow: false
   become: false
-  with_items: "{{ dotfiles_files|select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|list }}"
+  loop: "{{ dotfiles_files|select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)')|flatten(levels=1)|list }}"
