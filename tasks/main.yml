@@ -23,7 +23,6 @@
   when: "'@' not in item.stdout"
   loop: "{{ existing_dotfile_info.results|flatten(levels=1) }}"
   loop_control:
-    label: "{{ dotfiles_files[index] }}"
     index_var: index
 
 - name: Get list of directories
