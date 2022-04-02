@@ -30,7 +30,7 @@ jobs:
         with:
           path: 'charlesrocket.dotfiles'
 
-      - name: Set up Python 3
+      - name: Set up Python3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
