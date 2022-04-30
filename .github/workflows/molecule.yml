@@ -21,7 +21,6 @@ jobs:
     strategy:
       matrix:
         distro:
-          - nick-invision/macos-monterey-base
           - debian/bullseye64
           - generic/freebsd13
           - generic/openbsd7
