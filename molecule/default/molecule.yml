@@ -29,8 +29,6 @@ platforms:
 provisioner:
   name: ansible
   log: true
-  lint:
-    name: ansible-lint
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   config_options:
