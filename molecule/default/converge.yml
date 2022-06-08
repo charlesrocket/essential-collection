@@ -8,6 +8,7 @@
         name: "diodonfrost.git_lfs"
         apply:
           become: true
+
     - name: "Include dotfiles role"
       ansible.builtin.include_role:
         name: "charlesrocket.dotfiles"
