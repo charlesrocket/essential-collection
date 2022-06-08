@@ -1,7 +1,6 @@
 # dotfiles_role
 [![Ansible Role](https://img.shields.io/ansible/role/47410)](https://galaxy.ansible.com/charlesrocket/dotfiles)
 [![molecule](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml)
-[![ansible lint](https://github.com/charlesrocket/dotfiles_role/actions/workflows/ansible-lint.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/dotfiles_role/actions/workflows/ansible-lint.yml)
 ![score](https://img.shields.io/ansible/quality/47410)
 
 Deploy dotfiles from git repositories
