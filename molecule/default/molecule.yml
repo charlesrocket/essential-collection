@@ -13,7 +13,6 @@ lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8
 platforms:
   - name: instance
     box: ${MOLECULE_DISTRO}

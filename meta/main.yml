@@ -4,16 +4,20 @@ galaxy_info:
   description: Dotfiles deployment from Git repositories
   role_name: dotfiles
   license: "MIT"
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
   platforms:
     - name: FreeBSD
-      versions: all
+      versions:
+        - all
     - name: OpenBSD
-      versions: all
+      versions:
+        - all
     - name: Debian
-      versions: all
+      versions:
+        - all
     - name: MacOSX
-      version: all
+      version:
+        - all
   galaxy_tags:
     - dotfiles
     - git
