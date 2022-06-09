@@ -15,11 +15,11 @@
     that:
       - test_file1.stat.exists
       - test_file1.stat.islnk
-      - test_file1.stat.mode == "0755"
+      - test_file1.stat.executable
 
 - name: "Check ~/.zshrc"
   ansible.builtin.assert:
     that:
       - test_file2.stat.exists
       - test_file2.stat.islnk
-      - test_file2.stat.mode == "0644"
+      - test_file2.stat.executable == false
