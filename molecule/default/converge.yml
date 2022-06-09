@@ -3,12 +3,12 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include git role"
+    - name: Include git role
       ansible.builtin.include_role:
         name: "diodonfrost.git_lfs"
         apply:
           become: true
 
-    - name: "Include dotfiles role"
+    - name: Include dotfiles role
       ansible.builtin.include_role:
         name: "charlesrocket.dotfiles"

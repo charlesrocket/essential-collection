@@ -1,0 +1,25 @@
+---
+
+- name: "~/scripts/rand-str.sh information"
+  ansible.builtin.stat:
+    path: "~/scripts/rand-str.sh"
+  register: test_file1
+
+- name: "~/.zshrc information"
+  ansible.builtin.stat:
+    path: "~/.zshrc"
+  register: test_file2
+
+- name: "Check ~/scripts/rand-str.sh"
+  ansible.builtin.assert:
+    that:
+      - test_file1.stat.exists
+      - test_file1.stat.islnk
+      - test_file1.stat.executable
+
+- name: "Check ~/.zshrc"
+  ansible.builtin.assert:
+    that:
+      - test_file2.stat.exists
+      - test_file2.stat.islnk
+      - test_file2.stat.executable == false
