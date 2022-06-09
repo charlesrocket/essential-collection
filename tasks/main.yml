@@ -42,7 +42,7 @@
     mode: 0644
     follow: false
   become: false
-  loop: "{{ dotfiles_files | reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') | flatten(levels=1) | list }}"
+  loop: "{{ dotfiles_files | reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') | flatten(levels=1) | list }}" # noqa var-spacing
 
 # Link dotfiles scripts using regex from the task above
 - name: Link dotfiles scripts
@@ -53,4 +53,4 @@
     mode: 0755
     follow: false
   become: false
-  loop: "{{ dotfiles_files | select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') | flatten(levels=1) | list }}"
+  loop: "{{ dotfiles_files | select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') | flatten(levels=1) | list }}" # noqa var-spacing
