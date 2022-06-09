@@ -6,7 +6,7 @@ driver:
   name: vagrant
   provider:
     name: virtualbox
-  provision: no
+  provision: false
   cachier: machine
   parallel: true
 lint: |
@@ -25,7 +25,7 @@ platforms:
       - 'vm.synced_folder ".", "/vagrant", type: "rsync"'
       - 'vm.provision :shell, inline: "uname"'
     config_options:
-      ssh.keep_alive: yes
+      ssh.keep_alive: true
       ssh.remote_user: 'vagrant'
       synced_folder: true
     memory: 512
