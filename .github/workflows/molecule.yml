@@ -38,7 +38,7 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          brew install --cask vagrant
+          brew install --cask vagrant virtualbox
           pip3 install ansible ansible-lint molecule[vagrant] molecule-vagrant
 
       - name: Cache Vagrant boxes
