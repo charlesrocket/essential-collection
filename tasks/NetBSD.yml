@@ -4,3 +4,4 @@
   ansible.builtin.package:
     name: "{{ git_package }}"
     state: present
+  become: true

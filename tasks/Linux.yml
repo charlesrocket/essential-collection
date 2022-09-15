@@ -4,11 +4,13 @@
   portage:
     sync: web
   when: ansible_os_family == "Gentoo"
+  become: true
 
 - name: Linux | Install dependencies
   ansible.builtin.package:
     name: "{{ dependencies }}"
     state: present
+  become: true
   when: dependencies is defined
 
 - name: Linux | Flush handlers
@@ -18,3 +20,4 @@
   ansible.builtin.package:
     name: "{{ git_package }}"
     state: present
+  become: true
