@@ -1,0 +1,70 @@
+---
+
+name: molecule
+
+'on':
+  pull_request:
+  push:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: 'charlesrocket.git_role'
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        distro:
+          - debian/bullseye64
+          - generic/freebsd13
+          - generic/netbsd9
+          - generic/openbsd7
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v3
+        with:
+          path: 'charlesrocket.dotfiles'
+
+      - name: Set up Python3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: |
+          pip3 install ansible ansible-lint molecule[vagrant] molecule-vagrant
+
+      - name: Cache Vagrant boxes
+        uses: actions/cache@v3
+        with:
+          path: ~/.vagrant.d/boxes
+          key: ${{ runner.os }}-vagrant-${{ matrix.distro }}
+          restore-keys: |
+            ${{ runner.os }}-vagrant-${{ matrix.distro }}
+
+      - name: Run Molecule tests
+        run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
+  release:
+    needs: molecule
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v3
+
+      - name: Release
+        uses: robertdebock/galaxy-action@1.2.1
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
+          git_branch: master
