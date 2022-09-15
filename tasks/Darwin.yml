@@ -1,0 +1,6 @@
+---
+- name: Darwin | Install Git
+  homebrew:
+    name: "{{ git_package }}"
+    state: present
+    update_homebrew: true

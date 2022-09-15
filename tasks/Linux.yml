@@ -1,0 +1,19 @@
+---
+- name: Gentoo | Sync repositories
+  portage:
+    sync: web
+  when: ansible_os_family == "Gentoo"
+
+- name: Linux | Install dependencies
+  ansible.builtin.package:
+    name: "{{ dependencies }}"
+    state: present
+  when: dependencies is defined
+
+- name: Linux | Flush handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Linux | Install Git
+  ansible.builtin.package:
+    name: "{{ git_package }}"
+    state: present

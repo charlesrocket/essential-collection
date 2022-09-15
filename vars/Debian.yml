@@ -1,0 +1,6 @@
+---
+dependencies:
+  - apt-transport-https
+  - gnupg
+
+git_package: git

@@ -1,0 +1,8 @@
+---
+
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include git_role"
+      ansible.builtin.include_role:
+        name: "git_role"
