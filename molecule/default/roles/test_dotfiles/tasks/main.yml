@@ -10,6 +10,11 @@
     path: "~/.zshrc"
   register: test_file2
 
+- name: "~/.xsession information"
+  ansible.builtin.stat:
+    path: "~/.xsession"
+  register: test_file3
+
 - name: "Check ~/scripts/rand-str.sh"
   ansible.builtin.assert:
     that:
@@ -23,3 +28,10 @@
       - test_file2.stat.exists
       - test_file2.stat.islnk
       - test_file2.stat.executable == false
+
+- name: "Check ~/.xsession"
+  ansible.builtin.assert:
+    that:
+      - test_file3.stat.exists
+      - test_file3.stat.islnk
+      - test_file3.stat.executable

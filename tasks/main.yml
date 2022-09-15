@@ -37,7 +37,7 @@
             list }}"
 
 # Link dotfiles and filter scripts
-# with regex ([a-zA-Z0-9-/\s_\.\-\(\):])+\.(sh|py)
+# with regex (([a-zA-Z0-9-/\s_\.\-\(\):])+\.(sh|py))|(^\.xsession$|^\.xinitrc$)
 - name: Link dotfiles
   ansible.builtin.file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
@@ -47,7 +47,7 @@
     follow: false
   become: false
   loop: "{{ dotfiles_files |
-            reject('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') |
+            reject('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
             list }}"  # noqa var-spacing
 
@@ -61,6 +61,6 @@
     follow: false
   become: false
   loop: "{{ dotfiles_files |
-            select('match', '([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py)') |
+            select('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
             list }}"  # noqa var-spacing
