@@ -1,7 +1,7 @@
 ---
 
 - name: NetBSD | Install Git
-  ansible.builtin.package:
+  pkgin:
     name: "{{ git_package }}"
     state: present
   become: true
