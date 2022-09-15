@@ -38,6 +38,7 @@ jobs:
 
       - name: Install test dependencies.
         run: |
+          sudo apt-get install -y vagrant
           pip3 install ansible ansible-lint molecule[vagrant] molecule-vagrant
 
       - name: Cache Vagrant boxes
