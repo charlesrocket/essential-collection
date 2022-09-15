@@ -1,4 +1,5 @@
 ---
+
 - name: OpenBSD | Install Git
   ansible.builtin.package:
     name: "{{ git_package }}"
