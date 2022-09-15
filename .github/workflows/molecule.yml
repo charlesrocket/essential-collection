@@ -12,7 +12,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: 'charlesrocket.git_role'
+    working-directory: 'git_role'
 
 jobs:
   molecule:
