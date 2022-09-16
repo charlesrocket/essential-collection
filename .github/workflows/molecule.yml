@@ -22,9 +22,12 @@ jobs:
       matrix:
         distro:
           - debian/bullseye64
+          - generic/arch
+          - generic/opensuse15
           - generic/freebsd13
           - generic/netbsd9
           - generic/openbsd7
+
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v3
