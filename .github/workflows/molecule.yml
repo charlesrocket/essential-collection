@@ -22,7 +22,7 @@ jobs:
       matrix:
         distro:
           - debian/bullseye64
-          - generic/arch
+          - generic/gentoo
           - generic/opensuse15
           - generic/freebsd13
           - generic/netbsd9
