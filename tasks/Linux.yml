@@ -10,11 +10,8 @@
   ansible.builtin.package:
     name: "{{ dependencies }}"
     state: present
-  become: true
   when: dependencies is defined
-
-- name: Linux | Flush handlers
-  ansible.builtin.meta: flush_handlers
+  become: true
 
 - name: Linux | Install Git
   ansible.builtin.package:
