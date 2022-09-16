@@ -16,7 +16,7 @@ defaults:
 
 jobs:
   molecule:
-    runs-on: macos-10.15
+    runs-on: macos-12
     continue-on-error: true
     strategy:
       matrix:
