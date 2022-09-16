@@ -40,10 +40,7 @@ jobs:
         with:
           python-version: '3.x'
           cache: 'pip'
-
-      - name: Install test dependencies
-        run: |
-          pip3 install ansible ansible-lint molecule[vagrant] molecule-vagrant
+          cache-dependency-path: '**/requirements-dev.txt'
 
       - name: Cache Vagrant boxes
         uses: actions/cache@v3
