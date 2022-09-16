@@ -9,22 +9,32 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions:
-        - all
+        - any
     - name: OpenBSD
       versions:
-        - all
+        - any
     - name: NetBSD
       versions:
-        - all
+        - any
+    - name: Alpine
+      versions:
+        - any
     - name: Debian
       versions:
-        - all
+        - any
+    - name: Gentoo
+      versions:
+        - any
+    - name: opensuse
+      versions:
+        - any
     - name: Ubuntu
       versions:
-        - all
+        - any
     - name: MacOSX
       version:
-        - all
+        - any
   galaxy_tags:
     - development
     - git
+    - system
