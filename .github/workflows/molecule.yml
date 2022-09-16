@@ -42,6 +42,9 @@ jobs:
           cache: 'pip'
           cache-dependency-path: '**/requirements-dev.txt'
 
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
       - name: Cache Vagrant boxes
         uses: actions/cache@v3
         with:
