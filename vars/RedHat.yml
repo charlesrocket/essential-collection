@@ -1,0 +1,7 @@
+---
+
+dependencies:
+  - yum
+  - yum-utils
+
+git_package: git
