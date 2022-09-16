@@ -36,9 +36,10 @@ jobs:
           path: 'git_role'
 
       - name: Set up Python3
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+          cache: 'pip'
 
       - name: Install test dependencies
         run: |
