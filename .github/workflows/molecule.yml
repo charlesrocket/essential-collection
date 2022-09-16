@@ -22,6 +22,7 @@ jobs:
       matrix:
         distro:
           - generic/debian11
+          - generic/fedora36
           - generic/opensuse15
           - generic/freebsd13
           - generic/netbsd9
