@@ -1,6 +1,6 @@
 ---
 - name: NetBSD | Install Git
-  pkgin:
+  community.general.pkgin:
     name: "{{ git_package }}"
     state: present
     update_cache: true

@@ -1,6 +1,6 @@
 ---
 - name: Gentoo | Sync repositories
-  portage:
+  community.general.portage:
     sync: web
   when: ansible_os_family == "Gentoo"
   become: true
