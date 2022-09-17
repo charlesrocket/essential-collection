@@ -31,8 +31,6 @@ platforms:
       ssh.keep_alive: true
       ssh.remote_user: 'vagrant'
       synced_folder: true
-    memory: 512
-    cpus: 1
 
 provisioner:
   name: ansible
