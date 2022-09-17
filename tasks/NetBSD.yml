@@ -1,5 +1,4 @@
 ---
-
 - name: NetBSD | Install Git
   pkgin:
     name: "{{ git_package }}"

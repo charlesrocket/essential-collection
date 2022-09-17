@@ -1,5 +1,4 @@
 ---
-
 - name: Gentoo | Sync repositories
   portage:
     sync: web

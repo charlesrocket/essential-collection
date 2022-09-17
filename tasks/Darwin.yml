@@ -1,5 +1,4 @@
 ---
-
 - name: Darwin | Install Git
   homebrew:
     name: "{{ git_package }}"

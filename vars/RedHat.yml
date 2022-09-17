@@ -1,5 +1,4 @@
 ---
-
 dependencies:
   - yum
   - yum-utils
