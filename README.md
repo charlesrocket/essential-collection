@@ -7,7 +7,12 @@ Install Git on BSD/Linux machines with Ansible.
 
 ## Setup
 
-Use `ansible-galaxy install charlesrocket.git`.
+Run `ansible-galaxy install charlesrocket.git` or use `requirements.yml`:
+
+```
+roles:
+  - name: charlesrocket.dotfiles
+```
 
 ## Example
 
