@@ -17,7 +17,6 @@ defaults:
 jobs:
   molecule:
     runs-on: macos-12
-    continue-on-error: true
     strategy:
       max-parallel: 3
       matrix:
