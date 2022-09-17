@@ -11,7 +11,7 @@ Run `ansible-galaxy install charlesrocket.git` or use `requirements.yml`:
 
 ```
 roles:
-  - name: charlesrocket.dotfiles
+  - name: charlesrocket.git
 ```
 
 ## Example
