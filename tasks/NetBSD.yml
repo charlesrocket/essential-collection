@@ -3,6 +3,7 @@
   community.general.pkgin:
     name: "{{ dependencies }}"
     state: present
+    update_cache: true
   when: dependencies is defined
   become: true
 
