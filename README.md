@@ -5,10 +5,10 @@
 
 Deploy dotfiles from git repositories
 
-### Requirements
+#### Requirements
 `git` on managed machines
 
-## Install
+### Install
 
 `requirements.yml`:
 
@@ -17,7 +17,7 @@ roles:
   - name: charlesrocket.dotfiles
 ```
 
-#### Example
+##### Example
 
 ```
 - name: Playbook
@@ -27,15 +27,17 @@ roles:
     - {role: charlesrocket.dotfiles}
 ```
 
-## Set variables
+### Set variables
+##### Example
+
 ```
-dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git"
-dotfiles_repo_version: openbsd # branch option
-dotfiles_repo_accept_hostkey: false
+dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git" # dotfiles
+dotfiles_repo_version: openbsd # branch to track
+dotfiles_repo_accept_hostkey: false # StrictHostKeyChecking
 dotfiles_repo_force: false # force git clone
-dotfiles_repo_local_destination: "~/git/dotfiles"
-dotfiles_home: "~"
-dotfiles_files:
+dotfiles_repo_local_destination: "~/git/dotfiles" # local repo path
+dotfiles_home: "~" # local dotfiles path
+dotfiles_files: # files to track
   - .config/mc/ini
   - .zshrc
 ```
