@@ -9,6 +9,16 @@ Deploy dotfiles from git repositories
 `git` on managed machines
 
 ## Install
+
+`requirements.yml`:
+
+```
+roles:
+  - name: charlesrocket.dotfiles
+```
+
+#### Example
+
 ```
 - name: Playbook
   hosts: all
