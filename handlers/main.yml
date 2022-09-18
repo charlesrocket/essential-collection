@@ -1,4 +1,0 @@
----
-- name: NetBSD | mozilla-rootcerts
-  ansible.builtin.command: mozilla-rootcerts install
-  become: true
