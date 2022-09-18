@@ -1,4 +1,11 @@
 ---
+- name: NetBSD | Install dependencies
+  ansible.builtin.package:
+    name: "{{ dependencies }}"
+    state: present
+  when: dependencies is defined
+  become: true
+
 - name: NetBSD | Install Git
   community.general.pkgin:
     name: "{{ git_package }}"
