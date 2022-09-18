@@ -4,4 +4,8 @@
     name: "{{ git_package }}"
     state: present
     update_cache: true
+  notify: NetBSD | mozilla-rootcerts
   become: true
+
+- name: NetBSD | Flush handler
+  ansible.builtin.meta: flush_handlers
