@@ -16,14 +16,15 @@ defaults:
 
 jobs:
   molecule:
-    runs-on: macos-10.15
-    continue-on-error: true
+    runs-on: macos-12
     strategy:
+      max-parallel: 3
       matrix:
         distro:
-          - debian/bullseye64
+          - generic/debian11
           - generic/freebsd13
           - generic/openbsd7
+
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v3
@@ -31,13 +32,15 @@ jobs:
           path: 'charlesrocket.dotfiles'
 
       - name: Set up Python3
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: '**/requirements-dev.txt'
+          check-latest: true
 
-      - name: Install test dependencies.
-        run: |
-          pip3 install ansible ansible-lint molecule[vagrant] molecule-vagrant
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
 
       - name: Cache Vagrant boxes
         uses: actions/cache@v3
