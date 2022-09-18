@@ -23,6 +23,7 @@ jobs:
         distro:
           - generic/debian11
           - generic/freebsd13
+          - generic/netbsd9
           - generic/openbsd7
 
     steps:
