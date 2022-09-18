@@ -1,6 +1,6 @@
 ---
 - name: NetBSD | Install dependencies
-  ansible.builtin.package:
+  community.general.pkgin:
     name: "{{ dependencies }}"
     state: present
   when: dependencies is defined
