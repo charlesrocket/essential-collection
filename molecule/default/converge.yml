@@ -5,7 +5,7 @@
   tasks:
     - name: Include git role
       ansible.builtin.include_role:
-        name: "diodonfrost.git_lfs"
+        name: "charlesrocket.git"
         apply:
           become: true
 
