@@ -2,5 +2,5 @@
 - name: Set OS variables
   ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Install Git
+- name: Begin installation
   ansible.builtin.include_tasks: "{{ ansible_system }}.yml"
