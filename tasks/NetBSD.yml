@@ -12,4 +12,5 @@
     name: "{{ git_package }}"
     state: present
     update_cache: true
-  become: true 
+  become: true
+  
