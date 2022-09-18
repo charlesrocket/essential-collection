@@ -1,5 +1,4 @@
 ---
-
 dependency:
   name: galaxy
 
@@ -21,15 +20,15 @@ platforms:
     box: ${MOLECULE_DISTRO}
     interfaces:
       - network_name: public_network
-        dev: "virbr0"
-        type: "bridge"
-        mode: "bridge"
+        dev: virbr0
+        type: bridge
+        mode: bridge
     instance_raw_config_args:
       - 'vm.synced_folder ".", "/vagrant", type: "rsync"'
       - 'vm.provision :shell, inline: "uname"'
     config_options:
       ssh.keep_alive: true
-      ssh.remote_user: 'vagrant'
+      ssh.remote_user: vagrant
       synced_folder: true
 
 provisioner:
