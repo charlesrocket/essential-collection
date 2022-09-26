@@ -49,7 +49,7 @@
   loop: "{{ dotfiles_files |
             reject('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
-            list }}"  # noqa var-spacing
+            list }}"
 
 # Link dotfiles scripts using regex from the task above
 - name: Link dotfiles scripts
@@ -63,4 +63,4 @@
   loop: "{{ dotfiles_files |
             select('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
-            list }}"  # noqa var-spacing
+            list }}"
