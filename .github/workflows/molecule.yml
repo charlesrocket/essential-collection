@@ -49,7 +49,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-vagrant-${{ matrix.distro }}
 
-      - name: Run Molecule tests
+      - name: Run Molecule
         run: molecule test
         env:
           PY_COLORS: '1'
@@ -85,7 +85,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
 
-      - name: Run Molecule tests
+      - name: Run Molecule
         run: molecule test -s linux
         env:
           PY_COLORS: '1'
