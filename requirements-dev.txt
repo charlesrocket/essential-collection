@@ -1,4 +1,6 @@
 ansible
 ansible-lint
-molecule[vagrant]
+docker
+molecule
+molecule-docker
 molecule-vagrant
