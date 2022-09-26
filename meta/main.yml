@@ -12,7 +12,19 @@ galaxy_info:
     - name: OpenBSD
       versions:
         - all
+    - name: Alpine
+      versions:
+        - all
     - name: Debian
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: Ubuntu
       versions:
         - all
     - name: MacOSX
