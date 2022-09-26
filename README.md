@@ -24,7 +24,7 @@ roles:
   hosts: all
 
   roles:
-    - {role: charlesrocket.dotfiles}
+    - charlesrocket.dotfiles
 ```
 
 ### Set variables
