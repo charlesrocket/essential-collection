@@ -64,7 +64,8 @@ jobs:
           - alpine
           - debian
           - fedora
-          - rockylinux
+          - opensuse
+          - rocky
           - ubuntu
 
     steps:
