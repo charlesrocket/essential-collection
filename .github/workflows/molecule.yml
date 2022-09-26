@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         distro:
+          - dragonflybsd6
           - freebsd13
           - netbsd9
           - openbsd7
