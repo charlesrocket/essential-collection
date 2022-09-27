@@ -15,18 +15,14 @@ defaults:
     working-directory: 'git_role'
 
 jobs:
-  molecule:
+  vagrant:
     runs-on: macos-12
     strategy:
-      max-parallel: 3
       matrix:
         distro:
-          - generic/alpine316
-          - generic/debian11
-          - generic/fedora36
-          - generic/freebsd13
-          - generic/netbsd9
-          - generic/openbsd7
+          - freebsd13
+          - netbsd9
+          - openbsd7
 
     steps:
       - name: Check out the codebase
@@ -53,15 +49,51 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-vagrant-${{ matrix.distro }}
 
-      - name: Run Molecule tests
+      - name: Run Molecule
         run: molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
+  docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - alpine
+          - debian
+          - fedora
+          - opensuse
+          - rocky
+          - ubuntu
+
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v3
+        with:
+          path: 'git_role'
+
+      - name: Set up Python3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: '**/requirements-dev.txt'
+          check-latest: true
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run Molecule
+        run: molecule test -s linux
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
   release:
-    needs: molecule
+    needs: [docker, vagrant]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
