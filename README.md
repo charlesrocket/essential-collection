@@ -6,7 +6,7 @@
 Deploy dotfiles from git repositories
 
 #### Requirements
-`git` on managed machines
+`git` on managed machines ([git_role](https://github.com/charlesrocket/git_role))
 
 ### Install
 
