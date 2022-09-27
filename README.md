@@ -23,12 +23,3 @@ roles:
   roles:
     - charlesrocket.git
 ```
-
-#### Tested on
-
-- generic/alpine316
-- generic/debian11
-- generic/fedora36
-- generic/freebsd13
-- generic/netbsd9
-- generic/openbsd7
