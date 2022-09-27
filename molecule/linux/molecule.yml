@@ -1,0 +1,21 @@
+---
+
+dependency:
+  name: galaxy
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+driver:
+  name: docker
+platforms:
+  - name: linux
+    image: "ghcr.io/charlesrocket/ansible-containers/${MOLECULE_DISTRO}:latest"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: yes
+    pre_build_image: yes
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

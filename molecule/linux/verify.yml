@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: Test
+      # noqa command-instead-of-module no-changed-when
+      ansible.builtin.command: git version
+      ignore_errors: true
+      register: git_test
+
+    - name: Confirm output
+      ansible.builtin.assert:
+        that:
+          - git_test.rc == 0
+        success_msg: Test passed
