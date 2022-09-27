@@ -12,7 +12,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: 'charlesrocket.dotfiles'
+    working-directory: 'dotfiles_role'
 
 jobs:
   vagrant:
@@ -28,7 +28,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v3
         with:
-          path: 'charlesrocket.dotfiles'
+          path: 'dotfiles_role'
 
       - name: Set up Python3
         uses: actions/setup-python@v4
@@ -72,7 +72,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v3
         with:
-          path: 'charlesrocket.dotfiles'
+          path: 'dotfiles_role'
 
       - name: Set up Python3
         uses: actions/setup-python@v4
