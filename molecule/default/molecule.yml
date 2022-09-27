@@ -17,7 +17,7 @@ lint: |
 
 platforms:
   - name: instance
-    box: ${MOLECULE_DISTRO}
+    box: "generic/${MOLECULE_DISTRO}"
     interfaces:
       - network_name: public_network
         dev: virbr0
