@@ -3,17 +3,14 @@
   community.general.portage:
     sync: web
   when: ansible_os_family == "Gentoo"
-  become: true
 
 - name: Linux | Install dependencies
   ansible.builtin.package:
     name: "{{ dependencies }}"
     state: present
   when: dependencies is defined
-  become: true
 
 - name: Linux | Install Git
   ansible.builtin.package:
     name: "{{ git_package }}"
     state: present
-  become: true
