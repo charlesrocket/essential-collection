@@ -1,6 +1,14 @@
 ---
 - name: Set OS variables
-  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found',
+                                    params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family }}.yml"
+        - default.yml
+      paths:
+        - 'vars'
 
 - name: Begin installation
   ansible.builtin.include_tasks: "{{ ansible_system }}.yml"
