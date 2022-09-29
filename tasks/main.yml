@@ -36,8 +36,8 @@
             unique |
             list }}"
 
-# Link dotfiles and filter scripts
-# with regex (([a-zA-Z0-9-/\s_\.\-\(\):])+\.(sh|pl|py))|(^\.xsession$|^\.xinitrc$)
+# Link dotfiles and filter scripts with regex:
+# (([a-zA-Z0-9-/\s_\.\-\(\):])+\.(sh|pl|py))|(^\.xsession$|^\.xinitrc$)
 - name: Link dotfiles
   ansible.builtin.file:
     src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
@@ -47,7 +47,8 @@
     follow: false
   become: false
   loop: "{{ dotfiles_files |
-            reject('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)') |
+            reject('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.
+              (sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
             list }}"
 
@@ -61,6 +62,7 @@
     follow: false
   become: false
   loop: "{{ dotfiles_files |
-            select('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.(sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)') |
+            select('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.
+              (sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)') |
             flatten(levels=1) |
             list }}"
