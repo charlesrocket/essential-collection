@@ -1,4 +1,7 @@
 ---
+helper_dependencies:
+  - make
+
 dependencies:
   - yum
   - yum-utils

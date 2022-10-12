@@ -1,4 +1,7 @@
 ---
+helper_dependencies:
+  - gmake
+
 dependencies:
   - mozilla-rootcerts-openssl
 

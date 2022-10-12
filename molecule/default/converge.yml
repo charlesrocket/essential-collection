@@ -1,6 +1,9 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    git_netrc_helper: true
+
   tasks:
     - name: Include git_role
       ansible.builtin.include_role:

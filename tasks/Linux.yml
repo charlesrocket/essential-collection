@@ -4,6 +4,12 @@
     sync: web
   when: ansible_os_family == "Gentoo"
 
+- name: Linux | Install helper dependencies
+  ansible.builtin.package:
+    name: "{{ helper_dependencies }}"
+    state: present
+  when: helper_dependencies is defined and git_netrc_helper
+
 - name: Linux | Install dependencies
   ansible.builtin.package:
     name: "{{ dependencies }}"
