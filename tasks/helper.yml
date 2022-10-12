@@ -1,0 +1,20 @@
+---
+- name: Prepare directories
+  ansible.builtin.file:
+    dest: "{{ item }}"
+    state: directory
+    mode: 0755
+  become: false
+  loop:
+    - "{{ git_repo_local }}"
+    - "{{ helper_destination }}"
+
+- name: Clone git repository
+  ansible.builtin.git:
+    repo: https://github.com/git/git.git
+    dest: "{{ git_repo_local }}/git"
+    version: master
+    depth: 1
+  notify:
+    - Build git-credential-netrc
+    - Deploy git-credential-netrc

@@ -1,4 +1,12 @@
 ---
+- name: NetBSD | Install helper dependencies
+  community.general.pkgin:
+    name: "{{ helper_dependencies }}"
+    state: present
+    update_cache: true
+  when: helper_dependencies is defined and netrc_helper
+  become: true
+
 - name: NetBSD | Install dependencies
   community.general.pkgin:
     name: "{{ dependencies }}"

@@ -1,4 +1,7 @@
 ---
+helper_dependencies:
+  - build-essential
+
 dependencies:
   - apt-transport-https
   - gnupg
