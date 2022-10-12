@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    netrc_helper: true
+    git_netrc_helper: true
 
   tasks:
     - name: Include git_role

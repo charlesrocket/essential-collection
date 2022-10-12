@@ -10,7 +10,7 @@
     src:
       "{{ git_repo_local }}/git/contrib/credential/netrc/git-credential-netrc"
     remote_src: true
-    dest: "{{ helper_destination }}/git-credential-netrc"
+    dest: "{{ git_helper_destination }}/git-credential-netrc"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0755
