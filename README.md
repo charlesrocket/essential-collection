@@ -23,3 +23,15 @@ roles:
   roles:
     - charlesrocket.git
 ```
+
+### `netrc` credential helper
+
+* Requires `make`/`gmake`
+
+To deploy the `netrc` helper define the following variables:
+
+```
+git_repo_local: "~/gitlab/git"
+git_helper_destination: "~/bin"
+git_netrc_helper: true
+```
