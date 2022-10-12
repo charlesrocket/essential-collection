@@ -26,8 +26,6 @@ roles:
 
 ### `netrc` credential helper
 
-* Requires `make`/`gmake`
-
 To deploy the `netrc` helper define the following variables:
 
 ```
