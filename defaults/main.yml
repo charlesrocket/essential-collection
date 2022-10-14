@@ -1,4 +1,4 @@
 ---
-git_repo_local: "~/documents"
-git_helper_destination: "~/bin"
+git_repo_destination: "~/documents/git"
+git_helper_destination: "~/bin/git-credential-netrc"
 git_netrc_helper: false
