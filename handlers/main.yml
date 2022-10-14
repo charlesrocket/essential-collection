@@ -3,14 +3,14 @@
   ansible.builtin.command:
     "{{ (ansible_system == 'Linux') | ternary('make', 'gmake') }}"
   args:
-    chdir: "{{ git_repo_destination }}/contrib/credential/netrc/"
+    chdir: "{{ git_repo_directory }}/git/contrib/credential/netrc/"
 
 - name: Deploy git-credential-netrc
   ansible.builtin.copy:
     src:
-      "{{ git_repo_destination }}/contrib/credential/netrc/git-credential-netrc"
+      "{{ git_repo_directory }}/git/contrib/credential/netrc/git-credential-netrc"
     remote_src: true
-    dest: "{{ git_helper_destination }}"
+    dest: "{{ git_helper_directory }}git-credential-netrc"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0755

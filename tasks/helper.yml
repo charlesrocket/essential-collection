@@ -6,13 +6,13 @@
     mode: 0755
   become: false
   loop:
-    - "{{ git_repo_destination }}"
-    - "{{ git_helper_destination }}"
+    - "{{ git_repo_directory }}"
+    - "{{ git_helper_directory }}"
 
 - name: Clone git repository
   ansible.builtin.git:
     repo: https://github.com/git/git.git
-    dest: "{{ git_repo_destination }}"
+    dest: "{{ git_repo_directory }}/git"
     version: master
     depth: 1
   notify:
