@@ -29,7 +29,7 @@ roles:
 To deploy the `netrc` helper define the following variables:
 
 ```
-git_repo_local: "~/gitlab" # git repository directory
-git_helper_destination: "~/bin" # helper directory
+git_repo_destination: "~/gitlab/git" # git repository destination
+git_helper_destination: "~/bin/git-credential-netrc" # helper destination
 git_netrc_helper: true
 ```
