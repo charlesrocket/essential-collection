@@ -1,18 +1,15 @@
 ---
-- name: Prepare directories
+- name: Ensure helper directory exists
   ansible.builtin.file:
-    dest: "{{ item }}"
+    dest: "{{ git_helper_directory }}"
     state: directory
     mode: 0755
   become: false
-  loop:
-    - "{{ git_repo_directory }}"
-    - "{{ git_helper_directory }}"
 
 - name: Clone git repository
   ansible.builtin.git:
     repo: https://github.com/git/git.git
-    dest: "{{ git_repo_directory }}/git"
+    dest: "{{ git_repo_destination }}"
     version: master
     depth: 1
   notify:
