@@ -29,7 +29,9 @@ roles:
 To deploy the `netrc` helper define the following variables:
 
 ```
-git_repo_directory: "~/gitlab" # git repository directory
+git_repo_destination: "~/gitlab/git" # git repository destination
 git_helper_directory: "~/bin" # helper directory
 git_netrc_helper: true
 ```
+
+Add `git_repo_shallow: true` to use shallow clone.
