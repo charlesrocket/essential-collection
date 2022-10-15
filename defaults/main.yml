@@ -2,3 +2,4 @@
 git_repo_destination: "~/documents/git"
 git_helper_directory: "~/bin"
 git_netrc_helper: false
+git_repo_shallow: false

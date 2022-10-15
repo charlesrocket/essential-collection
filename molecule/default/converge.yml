@@ -3,6 +3,7 @@
   hosts: all
   vars:
     git_netrc_helper: true
+    git_repo_shallow: true
 
   tasks:
     - name: Include git_role

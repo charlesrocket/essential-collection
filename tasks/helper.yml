@@ -11,7 +11,7 @@
     repo: https://github.com/git/git.git
     dest: "{{ git_repo_destination }}"
     version: master
-    depth: 1
+    depth: "{{ git_repo_shallow | ternary('1', '0') }}"
   notify:
     - Build git-credential-netrc
     - Deploy git-credential-netrc
