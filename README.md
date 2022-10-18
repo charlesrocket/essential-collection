@@ -34,4 +34,5 @@ git_helper_directory: "~/bin" # helper directory
 git_netrc_helper: true
 ```
 
-Add `git_repo_shallow: true` to use shallow clone.
+* Add `git_repo_shallow: true` to use shallow clone.
+* Add `git_repo_force: true` to override local modifications.
