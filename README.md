@@ -3,7 +3,7 @@
 [![molecule](https://github.com/charlesrocket/git_role/actions/workflows/molecule.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/git_role/actions/workflows/molecule.yml)
 ![score](https://img.shields.io/ansible/quality/60363)
 
-Install Git on BSD/Linux machines with Ansible.
+Install Git on Unix/Linux machines with Ansible.
 
 ## Setup
 
