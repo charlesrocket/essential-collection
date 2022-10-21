@@ -6,29 +6,14 @@ galaxy_info:
   license: "MIT"
   min_ansible_version: "2.9"
   platforms:
-    - name: FreeBSD
+    - name: GenericUNIX
       versions:
         - all
-    - name: OpenBSD
+    - name: GenericBSD
       versions:
         - all
-    - name: Alpine
+    - name: GenericLinux
       versions:
-        - all
-    - name: Debian
-      versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
-    - name: opensuse
-      versions:
-        - all
-    - name: Ubuntu
-      versions:
-        - all
-    - name: MacOSX
-      version:
         - all
   galaxy_tags:
     - dotfiles
