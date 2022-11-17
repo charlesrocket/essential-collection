@@ -6,6 +6,7 @@ dotfiles_repo_force: false
 dotfiles_repo_local_destination: "~/git/dotfiles"
 dotfiles_home: "~"
 dotfiles_files:
+  - bin/public-ip
   - scripts/rand-str.sh
   - .xsession
   - .zshrc
