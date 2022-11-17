@@ -15,6 +15,11 @@
     path: "~/.xsession"
   register: test_file3
 
+- name: "~/bin/public-ip information"
+  ansible.builtin.stat:
+    path: "~/bin/public-ip"
+  register: test_file4
+
 - name: "Check ~/scripts/rand-str.sh"
   ansible.builtin.assert:
     that:
@@ -35,3 +40,10 @@
       - test_file3.stat.exists
       - test_file3.stat.islnk
       - test_file3.stat.executable
+
+- name: "Check ~/bin/public-ip"
+  ansible.builtin.assert:
+    that:
+      - test_file4.stat.exists
+      - test_file4.stat.islnk
+      - test_file4.stat.executable
