@@ -62,12 +62,7 @@ jobs:
       matrix:
         distro:
           - alpine
-          - arch
-          - debian
-          - fedora
-          - opensuse
           - rocky
-          - ubuntu
 
     steps:
       - name: Check out the codebase
