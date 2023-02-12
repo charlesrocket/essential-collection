@@ -10,11 +10,6 @@ driver:
   cachier: machine
   parallel: true
 
-lint: |
-  set -e
-  yamllint .
-  ansible-lint .
-
 platforms:
   - name: instance
     box: "generic/${MOLECULE_DISTRO}"
