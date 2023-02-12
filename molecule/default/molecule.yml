@@ -13,7 +13,7 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  ansible-lint .
 
 platforms:
   - name: instance
