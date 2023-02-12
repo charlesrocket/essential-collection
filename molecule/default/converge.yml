@@ -5,5 +5,7 @@
     git_netrc_helper: true
     git_repo_shallow: true
 
-  roles:
-    - role: charlesrocket.git_role
+  tasks:
+    - name: Include git_role
+      ansible.builtin.include_role:
+        name: git_role
