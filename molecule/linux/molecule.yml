@@ -5,11 +5,6 @@ dependency:
 driver:
   name: docker
 
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
-
 platforms:
   - name: linux
     image: "ghcr.io/charlesrocket/ansible-containers/${MOLECULE_DISTRO}:latest"
