@@ -1,6 +1,8 @@
+---
+
 name: Linting
 
-on:
+'on':
   pull_request:
   push:
   schedule:
@@ -8,10 +10,9 @@ on:
 
 jobs:
   build:
-    name: Linting
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Lint Ansible Playbook
-      uses: ansible-community/ansible-lint-action@main
+      - uses: actions/checkout@v3
+      - uses: ansible-community/ansible-lint-action@main
+      - run: pip3 install yamllint
+      - run: yamllint .
