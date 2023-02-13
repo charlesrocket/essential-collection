@@ -9,7 +9,7 @@ name: Linting
     - cron: "0 11 13 */2 *"
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
