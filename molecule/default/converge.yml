@@ -2,13 +2,9 @@
 
 - name: Converge
   hosts: all
-  tasks:
-    - name: Include git role
-      ansible.builtin.include_role:
-        name: "charlesrocket.git"
-        apply:
-          become: true
 
-    - name: Include dotfiles role
-      ansible.builtin.include_role:
-        name: "charlesrocket.dotfiles"
+  roles:
+    - role: charlesrocket.git
+      become: true
+
+    - role: charlesrocket.dotfiles
