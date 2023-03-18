@@ -50,7 +50,7 @@
     mode: 0644
     follow: false
   become: false
-  when: item.stat.executable == false
+  when: not item.stat.executable
   loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
 
 - name: Link dotfiles | directories
@@ -61,7 +61,7 @@
     mode: 0755
     follow: false
   become: false
-  when: item.stat.isdir == true
+  when: item.stat.isdir
   loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
 
 - name: Link dotfiles | executables
@@ -73,6 +73,6 @@
     follow: false
   become: false
   when:
-    - item.stat.executable == true
-    - item.stat.isdir == false
+    - item.stat.executable
+    - not item.stat.isdir
   loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
