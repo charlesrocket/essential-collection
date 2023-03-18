@@ -25,7 +25,7 @@
     that:
       - test_file1.stat.exists
       - test_file1.stat.islnk
-      - test_file1.stat.executable
+      - test_file1.stat.executable == false
 
 - name: "Check ~/.zshrc"
   ansible.builtin.assert:
