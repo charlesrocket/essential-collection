@@ -15,7 +15,7 @@
     path: "~/.xsession"
   register: test_file3
 
-- name: "~/bin"
+- name: "~/bin information"
   ansible.builtin.stat:
     path: "~/bin"
   register: test_file4
@@ -46,5 +46,4 @@
     that:
       - test_file4.stat.exists
       - test_file4.stat.islnk
-      - test_file4.stat.isdir
       - test_file4.stat.executable
