@@ -8,6 +8,12 @@
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
   become: false
 
+- name: Retrieve dotfiles facts
+  ansible.builtin.stat:
+    path: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+  register: dotfiles_stat
+  loop: "{{ dotfiles_files | flatten(levels=1) }}"
+
 - name: Ensure all configured dotfiles are links
   ansible.builtin.command: "ls -F {{ dotfiles_home }}/{{ item }}"
   register: existing_dotfile_info
@@ -36,33 +42,37 @@
             unique |
             list }}"
 
-# Link dotfiles and filter scripts with regex:
-# (([a-zA-Z0-9-/\s_\.\-\(\):])+\.(sh|pl|py))|(^\.xsession$|^\.xinitrc$)|(^bin\/)
 - name: Link dotfiles
   ansible.builtin.file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-    dest: "{{ dotfiles_home }}/{{ item }}"
+    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+    dest: "{{ dotfiles_home }}/{{ item.item }}"
     state: link
     mode: 0644
     follow: false
   become: false
-  loop: "{{ dotfiles_files |
-            reject('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.
-              (sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)|(^bin\\/)') |
-            flatten(levels=1) |
-            list }}"
+  when: item.stat.executable == false
+  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
 
-# Link scripts using regex from the task above
-- name: Link dotfiles | scripts
+- name: Link dotfiles | directories
   ansible.builtin.file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-    dest: "{{ dotfiles_home }}/{{ item }}"
+    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+    dest: "{{ dotfiles_home }}/{{ item.item }}"
     state: link
     mode: 0755
     follow: false
   become: false
-  loop: "{{ dotfiles_files |
-            select('match', '(([a-zA-Z0-9-/\\s_\\.\\-\\(\\):])+\\.
-              (sh|pl|py))|(^\\.xsession$|^\\.xinitrc$)|(^bin\\/)') |
-            flatten(levels=1) |
-            list }}"
+  when: item.stat.isdir == true
+  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
+
+- name: Link dotfiles | executables
+  ansible.builtin.file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+    dest: "{{ dotfiles_home }}/{{ item.item }}"
+    state: link
+    mode: 0755
+    follow: false
+  become: false
+  when:
+    - item.stat.executable == true
+    - item.stat.isdir == false
+  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
