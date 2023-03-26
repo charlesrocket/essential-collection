@@ -14,5 +14,5 @@
     force: "{{ git_repo_force }}"
     depth: "{{ git_repo_shallow | ternary('1', '0') }}"
   notify:
-    - "Build git-credential-{{ git_helper }}"
-    - "Deploy git-credential-{{ git_helper }}"
+    - "build git-credential-helper"
+    - "deploy git-credential-helper"

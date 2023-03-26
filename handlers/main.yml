@@ -1,16 +1,20 @@
 ---
-- name: "Build git-credential-{{ git_helper }}"
+- name: "Build credential helper | {{ git_helper }}"
   ansible.builtin.command:
     "{{ (ansible_system == 'Linux') | ternary('make', 'gmake') }}"
   args:
-    chdir: "{{ git_repo_destination }}/contrib/credential/{{ git_helper }}/"
+    chdir: "{{ git_repo_destination }}/contrib/credential/{{ item }}/"
+  listen: "build git-credential-helper"
+  loop: "{{ git_helper | flatten(levels=1) }}"
 
-- name: "Deploy git-credential-{{ git_helper }}"
+- name: "Deploy credential helper | {{ git_helper }}"
   ansible.builtin.copy:
     src: "{{ git_repo_destination }}/contrib/credential/\
-      {{ git_helper }}/git-credential-{{ git_helper }}"
+      {{ item }}/git-credential-{{ item }}"
     remote_src: true
-    dest: "{{ git_helper_directory }}/git-credential-{{ git_helper }}"
+    dest: "{{ git_helper_directory }}/git-credential-{{ item }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0755'
+  listen: "deploy git-credential-helper"
+  loop: "{{ git_helper | flatten(levels=1) }}"
