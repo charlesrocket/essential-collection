@@ -24,14 +24,14 @@ roles:
     - charlesrocket.git
 ```
 
-### `netrc` credential helper
+### Credential helper
 
-To deploy the `netrc` helper define the following variables:
+Define the following variables to deploy the credential helper:
 
 ```
 git_repo_destination: "~/gitlab/git" # git repository destination
 git_helper_directory: "~/bin" # helper directory
-git_netrc_helper: true
+git_helper: ["netrc"]
 ```
 
 * Add `git_repo_shallow: true` to use shallow clone.
