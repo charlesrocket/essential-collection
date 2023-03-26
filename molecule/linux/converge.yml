@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    git_helper: libsecret
+    git_helper: netrc
     git_repo_shallow: true
 
   tasks:

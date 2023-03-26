@@ -1,0 +1,23 @@
+---
+- name: Test
+  # noqa command-instead-of-module no-changed-when
+  ansible.builtin.command: git version
+  ignore_errors: true
+  register: git_test
+
+- name: Check credential helper
+  ansible.builtin.stat:
+    path: ~/bin/git-credential-netrc
+  register: git_helper
+
+- name: Confirm output
+  ansible.builtin.assert:
+    that:
+      - git_test.rc == 0
+    success_msg: Test passed
+
+- name: Confirm helper
+  ansible.builtin.assert:
+    that:
+      - git_helper.stat.executable
+    success_msg: Test passed
