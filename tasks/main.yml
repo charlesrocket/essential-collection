@@ -13,7 +13,6 @@
 - name: Begin installation
   ansible.builtin.include_tasks: "{{ ansible_system }}.yml"
 
-- name:
-    "Add credential helper | {{ git_helper | regex_replace('\\[|\\]', '') }}"
+- name: Add credential helper
   ansible.builtin.include_tasks: helper.yml
   when: git_helper is defined
