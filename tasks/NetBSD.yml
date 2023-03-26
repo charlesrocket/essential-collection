@@ -4,7 +4,7 @@
     name: "{{ helper_dependencies }}"
     state: present
     update_cache: true
-  when: helper_dependencies is defined and git_netrc_helper
+  when: helper_dependencies is defined and git_helper is defined
   become: true
 
 - name: NetBSD | Install dependencies

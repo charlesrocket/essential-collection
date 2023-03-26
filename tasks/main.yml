@@ -13,6 +13,6 @@
 - name: Begin installation
   ansible.builtin.include_tasks: "{{ ansible_system }}.yml"
 
-- name: Add credential helper | netrc
+- name: Add credential helper
   ansible.builtin.include_tasks: helper.yml
-  when: git_netrc_helper
+  when: git_helper is defined
