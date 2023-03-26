@@ -10,7 +10,7 @@
 
     - name: Check credential helper
       ansible.builtin.stat:
-        path: ~/bin/libsecret
+        path: ~/bin/git-credential-libsecret
       register: git_helper
 
     - name: Confirm output
