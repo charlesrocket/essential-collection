@@ -1,0 +1,22 @@
+---
+- name:
+    "Build credential helper | {{ git_helper | regex_replace('\\[|\\]', '') }}"
+  ansible.builtin.command:
+    "{{ (ansible_system == 'Linux') | ternary('make', 'gmake') }}"
+  args:
+    chdir: "{{ git_repo_destination }}/contrib/credential/{{ item }}/"
+  listen: "build git-credential-helper"
+  loop: "{{ git_helper | flatten(levels=1) }}"
+
+- name:
+    "Deploy credential helper | {{ git_helper | regex_replace('\\[|\\]', '') }}"
+  ansible.builtin.copy:
+    src: "{{ git_repo_destination }}/contrib/credential/\
+      {{ item }}/git-credential-{{ item }}"
+    remote_src: true
+    dest: "{{ git_helper_directory }}/git-credential-{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0755'
+  listen: "deploy git-credential-helper"
+  loop: "{{ git_helper | flatten(levels=1) }}"

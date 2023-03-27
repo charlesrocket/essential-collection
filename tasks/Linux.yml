@@ -1,0 +1,22 @@
+---
+- name: Gentoo | Sync repositories
+  community.general.portage:
+    sync: web
+  when: ansible_os_family == "Gentoo"
+
+- name: Linux | Install helper dependencies
+  ansible.builtin.package:
+    name: "{{ helper_dependencies }}"
+    state: present
+  when: helper_dependencies is defined and git_helper
+
+- name: Linux | Install dependencies
+  ansible.builtin.package:
+    name: "{{ dependencies }}"
+    state: present
+  when: dependencies is defined
+
+- name: Linux | Install Git
+  ansible.builtin.package:
+    name: "{{ git_package }}"
+    state: present

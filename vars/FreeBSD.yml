@@ -1,0 +1,5 @@
+---
+helper_dependencies:
+  - gmake
+
+git_package: git

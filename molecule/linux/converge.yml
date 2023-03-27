@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    git_helper: ["netrc"]
+    git_repo_shallow: true
+
+  tasks:
+    - name: Include git_role
+      ansible.builtin.include_role:
+        name: charlesrocket.git
