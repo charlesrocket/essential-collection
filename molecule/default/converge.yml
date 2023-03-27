@@ -2,13 +2,17 @@
 
 - name: Converge
   hosts: all
+  vars:
+    git_helper: ["netrc"]
+    git_repo_shallow: true
+
   tasks:
     - name: Include git role
       ansible.builtin.include_role:
-        name: "charlesrocket.git"
+        name: "git"
         apply:
           become: true
 
     - name: Include dotfiles role
       ansible.builtin.include_role:
-        name: "charlesrocket.dotfiles"
+        name: "dotfiles"

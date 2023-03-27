@@ -15,9 +15,9 @@
     path: "~/.xsession"
   register: test_file3
 
-- name: "~/bin information"
+- name: "~/bin/git-credential-netrc information"
   ansible.builtin.stat:
-    path: "~/bin"
+    path: ~/bin/git-credential-netrc
   register: test_file4
 
 - name: "Check ~/.config/mc/ini"
@@ -41,9 +41,8 @@
       - test_file3.stat.islnk
       - test_file3.stat.executable
 
-- name: "Check ~/bin"
+- name: "Check ~/bin/git-credential-netrc"
   ansible.builtin.assert:
     that:
-      - test_file4.stat.exists
-      - test_file4.stat.islnk
       - test_file4.stat.executable
+    success_msg: Test passed
