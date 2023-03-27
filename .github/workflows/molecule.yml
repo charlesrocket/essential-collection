@@ -12,7 +12,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: 'git_role'
+    working-directory: 'essential_collection'
 
 jobs:
   vagrant:
@@ -28,7 +28,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v3
         with:
-          path: 'git_role'
+          path: 'essential_collection'
 
       - name: Set up Python3
         uses: actions/setup-python@v4
@@ -68,7 +68,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v3
         with:
-          path: 'git_role'
+          path: 'essential_collection'
 
       - name: Set up Python3
         uses: actions/setup-python@v4
