@@ -9,10 +9,10 @@
   tasks:
     - name: Include git role
       ansible.builtin.include_role:
-        name: "git"
+        name: "charlesrocket.essential.git"
         apply:
           become: true
 
     - name: Include dotfiles role
       ansible.builtin.include_role:
-        name: "dotfiles"
+        name: "charlesrocket.essential.dotfiles"
