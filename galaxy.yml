@@ -1,0 +1,18 @@
+namespace: charlesrocket
+name: essential
+version: 1.0.0
+readme: README.md
+description: Essential Ansible roles
+authors:
+  - charlesrocket
+
+license:
+  - MIT
+
+tags:
+  - development
+  - dotfiles
+  - git
+
+repository: https://github.com/charlesrocket/essential_collection
+issues: https://github.com/charlesrocket/essential_collection/issues
