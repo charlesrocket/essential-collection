@@ -1,34 +1,30 @@
-# dotfiles_role
-[![Ansible Role](https://img.shields.io/ansible/role/47410)](https://galaxy.ansible.com/charlesrocket/dotfiles)
-[![molecule](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml/badge.svg?branch=master&event=push)](https://github.com/charlesrocket/dotfiles_role/actions/workflows/molecule.yml)
-![score](https://img.shields.io/ansible/quality/47410)
-
-Deploy dotfiles from git repositories
-
-#### Requirements
-`git` on managed machines ([git_role](https://github.com/charlesrocket/git_role))
+# essential_collection
+[![molecule](https://github.com/charlesrocket/essential_collection/actions/workflows/molecule.yml/badge.svg?branch=trunk&event=push)](https://github.com/charlesrocket/essential_collection/actions/workflows/molecule.yml)
 
 ### Install
 
 `requirements.yml`:
 
 ```
-roles:
-  - name: charlesrocket.dotfiles
+collections:
+  - name: charlesrocket.essential
 ```
 
-##### Example
+## `dotfiles`
+#### Requirements
+`git` on managed machines
+
+### Example
 
 ```
 - name: Playbook
   hosts: all
 
   roles:
-    - charlesrocket.dotfiles
+    - charlesrocket.essential.dotfiles
 ```
 
 ### Set variables
-##### Example
 
 ```
 dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git" # dotfiles
@@ -41,3 +37,27 @@ dotfiles_files: # files to track
   - .config/mc/ini
   - .zshrc
 ```
+
+## `git`
+### Example
+
+```
+- name: Playbook
+  hosts: all
+
+  roles:
+    - charlesrocket.essential.git
+```
+
+### Credential helper
+
+Define the following variables to deploy the credential helper:
+
+```
+git_repo_destination: "~/gitlab/git" # git repository destination
+git_helper_directory: "~/bin" # helper directory
+git_helper: ["netrc"]
+```
+
+* Add `git_repo_shallow: true` to use shallow clone.
+* Add `git_repo_force: true` to override local modifications.
