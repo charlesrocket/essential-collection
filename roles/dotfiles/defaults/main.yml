@@ -6,7 +6,6 @@ dotfiles_repo_force: false
 dotfiles_repo_local_destination: "~/git/dotfiles"
 dotfiles_home: "~"
 dotfiles_files:
-  - bin
   - .config/mc/ini
   - .xsession
   - .zshrc
