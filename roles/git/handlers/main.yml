@@ -7,6 +7,7 @@
     chdir: "{{ git_repo_destination }}/contrib/credential/{{ item }}/"
   listen: "build git-credential-helper"
   loop: "{{ git_helper | flatten(levels=1) }}"
+  become: false
 
 - name:
     "Deploy credential helper | {{ git_helper | regex_replace('\\[|\\]', '') }}"
@@ -20,3 +21,4 @@
     mode: '0755'
   listen: "deploy git-credential-helper"
   loop: "{{ git_helper | flatten(levels=1) }}"
+  become: false

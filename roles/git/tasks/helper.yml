@@ -13,6 +13,7 @@
     version: master
     force: "{{ git_repo_force }}"
     depth: "{{ git_repo_shallow | ternary('1', '0') }}"
+  become: false
   notify:
     - "build git-credential-helper"
     - "deploy git-credential-helper"
