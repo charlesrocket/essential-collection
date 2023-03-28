@@ -14,8 +14,8 @@ defaults:
     working-directory: 'essential_collection'
 
 jobs:
-  ansible-lint:
-    name: ansible-lint
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
