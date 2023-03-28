@@ -14,7 +14,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v3
 
-      - name: Release
+      - name: Publish
         uses: ansible/ansible-publish-action@v1.0.0
         with:
           api_key: ${{ secrets.GALAXY_API_KEY }}
