@@ -1,7 +1,6 @@
 ---
 
-name: molecule
-
+name: CI
 'on':
   pull_request:
   push:
@@ -15,7 +14,30 @@ defaults:
     working-directory: 'essential_collection'
 
 jobs:
+  ansible-lint:
+    name: ansible-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'essential_collection'
+          fetch-depth: 0
+      - uses: ansible-community/ansible-lint-action@main
+      - run: pip3 install yamllint
+      - run: yamllint .
+      - uses: ansible/ansible-lint-action@main
+
+  ansible-test:
+    name: ansible-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform sanity testing
+        uses: ansible-community/ansible-test-gh-action@release/v1
+        with:
+          testing-type: sanity
+
   vagrant:
+    name: molecule ${{ matrix.distro }}
     runs-on: macos-12
     strategy:
       matrix:
@@ -57,6 +79,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
   docker:
+    name: molecule ${{ matrix.distro }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -90,13 +113,10 @@ jobs:
 
   release:
     needs: [docker, vagrant]
-    runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
-    steps:
-      - name: Check out the codebase
-        uses: actions/checkout@v3
+    if: |
+      github.repository_owner == 'charlesrocket' &&
+      startsWith(github.ref, 'refs/tags/')
 
-      - name: Release
-        uses: ansible/ansible-publish-action@v1.0.0
-        with:
-          api_key: ${{ secrets.GALAXY_API_KEY }}
+    uses: ./.github/workflows/cd.yml
+    secrets:
+      GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
