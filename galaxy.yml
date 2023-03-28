@@ -20,3 +20,4 @@ build_ignore:
   - .github
   - .gitignore
   - molecule
+  - requirements*txt
