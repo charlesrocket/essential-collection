@@ -16,3 +16,7 @@ tags:
 
 repository: https://github.com/charlesrocket/essential_collection
 issues: https://github.com/charlesrocket/essential_collection/issues
+build_ignore:
+  - .github
+  - .gitignore
+  - molecule
