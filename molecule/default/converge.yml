@@ -5,6 +5,15 @@
   vars:
     git_helper: ["netrc"]
     git_repo_shallow: true
+    git_repo_destination: "~/documents/git"
+    dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git"
+    dotfiles_repo_version: obsd-station
+    dotfiles_repo_local_destination: "~/documents/dotfiles"
+    dotfiles_files:
+      - .config/mc/ini
+      - .xsession
+      - .zshrc
+
 
   tasks:
     - name: Include git role
