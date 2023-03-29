@@ -25,7 +25,7 @@ argument_specs:
       dotfiles_repo_accept_hostkey:
         description:
           - >-
-            Ensure “-o StrictHostKeyChecking=no” is present as an
+            Ensure "-o StrictHostKeyChecking=no" is present as an
             ssh option.
 
         type: bool
