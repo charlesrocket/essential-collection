@@ -1,0 +1,38 @@
+---
+
+argument_specs:
+  main:
+    short_description: Git installer for Unix/Linux
+    description:
+      - >-
+        Install git on Unix/Linux machines and deploy
+        credential helpers.
+
+    author:
+      - charlesrocket
+
+    options:
+      git_repo_destination:
+        description: Local git repository target.
+        type: str
+        default: ~/src/git
+
+      git_helper_directory:
+        description: Deployment target for helpers.
+        type: str
+        default: ~/bin
+
+      git_helper:
+        description: Helpers to deploy.
+        type: list
+        elements: str
+
+      git_repo_shallow:
+        description: Use shallow clone.
+        type: bool
+        default: false
+
+      git_repo_force:
+        description: Force C(git clone) to override local modifications.
+        type: bool
+        default: false
