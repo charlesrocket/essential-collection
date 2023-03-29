@@ -44,7 +44,7 @@ argument_specs:
       dotfiles_home:
         description: Local dotfiles deployment target.
         type: str
-        default: ~
+        default: "~"
 
       dotfiles_files:
         description: Files to track.
