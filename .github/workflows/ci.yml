@@ -113,7 +113,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
   release:
-    needs: [docker, vagrant]
+    needs: [ansible-test, docker, vagrant]
     permissions:
       contents: read
       pages: write
