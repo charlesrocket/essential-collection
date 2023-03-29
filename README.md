@@ -30,7 +30,7 @@ collections:
 ```
 dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git" # dotfiles
 dotfiles_repo_version: openbsd # branch to track
-dotfiles_repo_accept_hostkey: false # StrictHostKeyChecking
+dotfiles_repo_accept_hostkey: false # StrictHostKeyChecking=no
 dotfiles_repo_force: false # force git clone
 dotfiles_repo_local_destination: "~/git/dotfiles" # local repo path
 dotfiles_home: "~" # local dotfiles path
