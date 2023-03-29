@@ -7,6 +7,7 @@
     version: "{{ dotfiles_repo_version }}"
     force: "{{ dotfiles_repo_force }}"
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+    accept_newhostkey: "{{ dotfiles_repo_accept_newhostkey }}"
   become: false
 
 - name: Retrieve dotfiles facts
