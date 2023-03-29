@@ -17,6 +17,7 @@ tags:
   - git
 
 repository: https://github.com/charlesrocket/essential_collection
+documentation: https://charlesrocket.github.io/essential_collection/
 issues: https://github.com/charlesrocket/essential_collection/issues
 build_ignore:
   - .github
