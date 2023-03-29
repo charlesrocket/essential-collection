@@ -1,4 +1,5 @@
 ---
+
 galaxy_info:
   author: charlesrocket
   description: Dotfiles deployment from Git repositories

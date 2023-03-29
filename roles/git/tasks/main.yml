@@ -1,4 +1,5 @@
 ---
+
 - name: Set OS variables
   ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found',
                                     params) }}"

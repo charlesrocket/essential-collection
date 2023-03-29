@@ -1,4 +1,5 @@
 ---
+
 - name:
     "Build credential helper | {{ git_helper | regex_replace('\\[|\\]', '') }}"
   ansible.builtin.command:

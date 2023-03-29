@@ -1,4 +1,5 @@
 ---
+
 - name: Ensure helper directory exists
   ansible.builtin.file:
     dest: "{{ git_helper_directory }}"

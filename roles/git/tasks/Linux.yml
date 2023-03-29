@@ -1,4 +1,5 @@
 ---
+
 - name: Gentoo | Sync repositories
   community.general.portage:
     sync: web

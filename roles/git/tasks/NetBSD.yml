@@ -1,4 +1,5 @@
 ---
+
 - name: NetBSD | Install helper dependencies
   community.general.pkgin:
     name: "{{ helper_dependencies }}"

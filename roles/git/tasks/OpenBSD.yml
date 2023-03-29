@@ -1,4 +1,5 @@
 ---
+
 - name: OpenBSD | Install helper dependencies
   ansible.builtin.package:
     name: "{{ helper_dependencies }}"
