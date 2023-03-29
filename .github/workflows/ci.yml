@@ -111,6 +111,14 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
+  docs:
+    name: Deploy docsite
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/docs.yml
+
   release:
     needs: [docker, vagrant]
     if: |
