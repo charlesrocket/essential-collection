@@ -32,7 +32,7 @@ jobs:
       - name: Install collection locally
         run: >
           ansible-galaxy collection install
-          charlesrocket.essential-$(grep version galaxy.yml |
+          charlesrocket-essential-$(grep version galaxy.yml |
           awk '{print $2}').tar.gz
 
       - name: Install sphinx dependencies
