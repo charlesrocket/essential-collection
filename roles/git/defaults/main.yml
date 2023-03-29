@@ -1,5 +1,5 @@
 ---
-git_repo_destination: "~/documents/git"
+git_repo_destination: "~/src/git"
 git_helper_directory: "~/bin"
 git_repo_shallow: false
 git_repo_force: false
