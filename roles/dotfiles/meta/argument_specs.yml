@@ -22,11 +22,11 @@ argument_specs:
         type: str
         required: true
 
-      dotfiles_repo_accept_hostkey:
+      dotfiles_repo_accept_newhostkey:
         description:
           - >-
-            Ensure "-o StrictHostKeyChecking=no" is present as an
-            ssh option.
+            Ensure "-o StrictHostKeyChecking=accept-new" is present
+            as an ssh option.
 
         type: bool
         default: false

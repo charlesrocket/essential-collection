@@ -26,6 +26,9 @@ argument_specs:
         description: Helpers to deploy.
         type: list
         elements: str
+        choices:
+          - netrc
+          - libsecret
 
       git_repo_shallow:
         description: Use shallow clone.
