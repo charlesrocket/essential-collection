@@ -36,7 +36,7 @@
   ansible.builtin.file:
     dest: "{{ dotfiles_home }}/{{ item }}"
     state: directory
-    mode: 0755
+    mode: '0755'
   become: false
   loop: "{{ dotfiles_files |
             map('regex_replace', '([^\/]+$)', '') |
@@ -48,7 +48,7 @@
     src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
     dest: "{{ dotfiles_home }}/{{ item.item }}"
     state: link
-    mode: 0644
+    mode: '0644'
     follow: false
   become: false
   when: not item.stat.executable
@@ -59,7 +59,7 @@
     src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
     dest: "{{ dotfiles_home }}/{{ item.item }}"
     state: link
-    mode: 0755
+    mode: '0755'
     follow: false
   become: false
   when: item.stat.isdir
@@ -70,7 +70,7 @@
     src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
     dest: "{{ dotfiles_home }}/{{ item.item }}"
     state: link
-    mode: 0755
+    mode: '0755'
     follow: false
   become: false
   when:
