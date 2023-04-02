@@ -17,9 +17,9 @@ tags:
   - dotfiles
   - git
 
-repository: https://github.com/charlesrocket/essential_collection
-documentation: https://charlesrocket.github.io/essential_collection/
-issues: https://github.com/charlesrocket/essential_collection/issues
+repository: https://github.com/charlesrocket/essential-collection
+documentation: https://charlesrocket.github.io/essential-collection/
+issues: https://github.com/charlesrocket/essential-collection/issues
 build_ignore:
   - .github
   - .gitignore
