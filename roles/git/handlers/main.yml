@@ -6,6 +6,8 @@
     "{{ (ansible_system == 'Linux') | ternary('make', 'gmake') }}"
   args:
     chdir: "{{ git_repo_destination }}/contrib/credential/{{ item }}/"
+    creates: "{{ git_repo_destination }}/contrib/credential/{{ item }}\
+      /git-credential-{{ item }}"
   listen: "build git-credential-helper"
   loop: "{{ git_helper | flatten(levels=1) }}"
   become: false
