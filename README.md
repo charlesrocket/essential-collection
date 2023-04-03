@@ -6,7 +6,7 @@
 
 `requirements.yml`:
 
-```
+```yaml
 collections:
   - name: charlesrocket.essential
 ```
@@ -17,7 +17,7 @@ collections:
 
 ### Example
 
-```
+```yaml
 - name: Playbook
   hosts: all
 
@@ -27,7 +27,7 @@ collections:
 
 ### Set variables
 
-```
+```yaml
 dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git" # dotfiles
 dotfiles_repo_version: openbsd # branch to track
 dotfiles_repo_accept_newhostkey: false # StrictHostKeyChecking=accept-new
@@ -42,7 +42,7 @@ dotfiles_files: # files to track
 ## `git`
 ### Example
 
-```
+```yaml
 - name: Playbook
   hosts: all
 
@@ -54,7 +54,7 @@ dotfiles_files: # files to track
 
 Define the following variables to deploy the credential helper:
 
-```
+```yaml
 git_repo_destination: "~/gitlab/git" # git repository destination
 git_helper_directory: "~/bin" # helper directory
 git_helper: ["netrc"]
