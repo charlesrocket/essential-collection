@@ -36,6 +36,10 @@ jobs:
         uses: ansible-community/ansible-test-gh-action@release/v1
         with:
           testing-type: sanity
+      - name: Perform integration testing
+        uses: ansible-community/ansible-test-gh-action@release/v1
+        with:
+          testing-type: integration
 
   vagrant:
     name: molecule ${{ matrix.distro }}
