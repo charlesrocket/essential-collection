@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2023-04-10
+
+### CI/CD
+
+- Perform integration testing
+- Drop defaults
+
+### Documentation
+
+- Add codecov
+- Improve `remote_vars` documentation
+
+### Features
+
+- Add `remote_vars` plugin
+- Return downloaded variables
+
+### Miscellaneous tasks
+
+- Update README.md
+- Version bump
+- Fix header
+- Version bump
+
+### Testing
+
+- Add integration tests
+
 ## [1.1.0] - 2023-04-02
 
 ### CI/CD
