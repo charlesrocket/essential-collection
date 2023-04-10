@@ -48,6 +48,6 @@ class ActionModule(ActionBase):
             response.close()
 
         content = None
-        loaded_vars = None
+        result['new_vars'] = loaded_vars
 
         return result
