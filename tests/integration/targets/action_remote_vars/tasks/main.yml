@@ -1,0 +1,15 @@
+---
+
+- name: Load test variables
+  remote_vars:
+    url: "https://raw.githubusercontent.com/charlesrocket/\
+      freebsd-collection/trunk/profiles/test/station.yml"
+  register: result
+
+- name: Check if variables were loaded
+  ansible.builtin.assert:
+    that:
+      - result is successful
+      - "'microcode_update' in ansible_facts"
+      - microcode_update == true
+      - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]
