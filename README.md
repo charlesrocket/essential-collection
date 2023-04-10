@@ -1,4 +1,4 @@
-# essential_collection
+# essential-collection
 [![Ansible Role](https://img.shields.io/ansible/collection/2396)](https://galaxy.ansible.com/charlesrocket/essential)
 [![molecule](https://github.com/charlesrocket/essential_collection/actions/workflows/ci.yml/badge.svg?branch=trunk&event=push)](https://github.com/charlesrocket/essential_collection/actions/workflows/ci.yml)
 
