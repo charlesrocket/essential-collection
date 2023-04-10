@@ -9,10 +9,11 @@ __metaclass__ = type
 
 
 DOCUMENTATION = r'''
+---
 module: remote_vars
 short_description: Include variables from remote files
 description:
-  - Download variables file from remote host and inject them into C(ansible_facts)
+  - Download variables file from remote hosts and inject it into C(ansible_facts).
 version_added: "1.2.0"
 options:
   url:
@@ -31,4 +32,15 @@ EXAMPLES = r'''
     url: https://www.example.com/user_vars.yml
 '''
 
-RETURN = r''' # '''
+RETURN = r'''
+ansible_facts:
+  description: Updated C(ansible_facts)
+  returned: success
+  type: dict
+  sample: {'variable': 'value'}
+new_vars:
+  description: Downloaded variables
+  returned: success
+  type: dict
+  sample: {'variable': 'value'}
+'''
