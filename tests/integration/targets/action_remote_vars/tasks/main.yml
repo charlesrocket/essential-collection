@@ -3,7 +3,7 @@
 - name: Load test variables
   remote_vars:
     url: "https://raw.githubusercontent.com/charlesrocket/\
-      freebsd-collection/trunk/profiles/test/station.yml"
+      essential-collection/trunk/tests/test-vars.yml"
   register: result
 
 - name: Check if variables were loaded
