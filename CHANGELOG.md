@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2023-04-12
+
+### Documentation
+
+- Update short descriptions
+
+### Miscellaneous tasks
+
+- Version bump
+
+### Testing
+
+- Add test variables
+
 ## [1.2.0] - 2023-04-10
 
 ### CI/CD
@@ -25,6 +39,7 @@ All notable changes to this project will be documented in this file.
 - Version bump
 - Fix header
 - Version bump
+- Prepare for 1.2.0
 
 ### Testing
 
