@@ -4,9 +4,10 @@ __metaclass__ = type
 import urllib
 import yaml
 
+from ansible.errors import AnsibleError
 from ansible.plugins.action import ActionBase
 from ansible.module_utils.urls import open_url
-from ansible.module_utils._text import to_native
+from ansible.module_utils.common.text.converters import to_native
 from ansible.utils.display import Display
 
 display = Display()
@@ -20,32 +21,33 @@ class ActionModule(ActionBase):
         if not url:
             return {'failed': True, 'msg': 'URL is missing or invalid'}
 
+        response = None
+
         try:
-            with open_url(url, timeout=10) as response:
-                content = response.read().decode()
-                loaded_vars = yaml.safe_load(content)
+            response = open_url(url, timeout=10)
+            content = response.read().decode()
+            loaded_vars = yaml.safe_load(content)
 
-                if not loaded_vars:
-                    return {'failed': True,
-                            'msg': 'No variables found in content'}
+            if not loaded_vars:
+                return {'failed': True,
+                        'msg': 'No variables found'}
 
-                loaded_vars = self._templar.template(loaded_vars)
-                result['ansible_facts'] = dict(
-                    task_vars['ansible_facts'],
-                    **loaded_vars)
+            loaded_vars = self._templar.template(loaded_vars)
+            result['ansible_facts'] = dict(
+                task_vars['ansible_facts'],
+                **loaded_vars)
 
         except urllib.error.URLError as err:
-            return {'failed': True,
-                    'msg':
-                    f"Error connecting to URL {url}: {to_native(err)}"}
+            raise AnsibleError('Error connecting to %s: %s'
+                               % (to_native(url), to_native(err))) from err
 
         except yaml.YAMLError as err:
-            return {'failed': True,
-                    'msg':
-                    f"Error loading YAML from URL {url}: {to_native(err)}"}
+            raise AnsibleError('Error loading YAML from %s: %s'
+                               % (to_native(url), to_native(err))) from err
 
         finally:
-            response.close()
+            if response is not None:
+                response.close()
 
         content = None
         result['new_vars'] = loaded_vars
