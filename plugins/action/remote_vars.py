@@ -8,9 +8,6 @@ from ansible.errors import AnsibleError
 from ansible.plugins.action import ActionBase
 from ansible.module_utils.urls import open_url
 from ansible.module_utils.common.text.converters import to_native
-from ansible.utils.display import Display
-
-display = Display()
 
 
 class ActionModule(ActionBase):
