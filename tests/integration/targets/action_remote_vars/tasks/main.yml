@@ -12,19 +12,19 @@
       essential-collection/trunk/README.md"
   register: result_invalid
   ignore_errors: true
-  failed_when: result_invalid.rc == 0
 
 - name: Empty url
   remote_vars:
     url: ""
   register: result_empty
   ignore_errors: true
-  failed_when: result_empty.rc == 0
 
 - name: Check results
   ansible.builtin.assert:
     that:
       - result_valid is successful
+      - result_invalid is failed
+      - result_empty is failed
       - "'microcode_update' in ansible_facts"
       - microcode_update == true
       - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]
