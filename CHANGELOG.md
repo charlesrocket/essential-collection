@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2023-04-14
+
+### Bug Fixes
+
+- Improve error handling
+
+### CI/CD
+
+- Add codecov config
+
+### Documentation
+
+- Add attributes
+
+### Miscellaneous tasks
+
+- Version bump
+- Fix test name
+- Drop `display`
+
+### Testing
+
+- Cover invalid inputs
+- Rename test cases
+- Check failed results
+- Test empty files
+- Test error 404
+
 ## [1.2.1] - 2023-04-12
 
 ### Documentation
@@ -11,6 +39,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous tasks
 
 - Version bump
+- Prepare for 1.2.1
 
 ### Testing
 
