@@ -21,6 +21,18 @@ options:
       - Location of a remote YAML file.
     type: str
     required: true
+extends_documentation_fragment:
+- action_common_attributes
+- action_common_attributes.facts
+attributes:
+    check_mode:
+        support: full
+    diff_mode:
+        support: none
+    facts:
+        support: full
+    platform:
+        platforms: all
 
 author:
   - k (@charlesrocket)
