@@ -1,12 +1,12 @@
 ---
 
-- name: Load test variables
+- name: Valid file
   remote_vars:
     url: "https://raw.githubusercontent.com/charlesrocket/\
       essential-collection/trunk/tests/test-vars.yml"
   register: result_valid
 
-- name: Try invalid file
+- name: Invalid file
   remote_vars:
     url: "https://raw.githubusercontent.com/charlesrocket/\
       essential-collection/trunk/README.md"
@@ -14,7 +14,7 @@
   ignore_errors: true
   failed_when: result_invalid.rc == 0
 
-- name: Try empty url
+- name: Empty url
   remote_vars:
     url: ""
   register: result_empty
