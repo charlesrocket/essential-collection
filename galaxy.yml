@@ -23,5 +23,6 @@ issues: https://github.com/charlesrocket/essential-collection/issues
 build_ignore:
   - .github
   - .gitignore
+  - codecov.yml
   - molecule
   - requirements*txt
