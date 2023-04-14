@@ -4,12 +4,29 @@
   remote_vars:
     url: "https://raw.githubusercontent.com/charlesrocket/\
       essential-collection/trunk/tests/test-vars.yml"
-  register: result
+  register: result_valid
 
-- name: Check if variables were loaded
+- name: Try invalid file
+  remote_vars:
+    url: "https://raw.githubusercontent.com/charlesrocket/\
+      essential-collection/trunk/README.md"
+  register: result_invalid
+  ignore_errors: true
+  failed_when: result_invalid.rc == 0
+
+- name: Try empty url
+  remote_vars:
+    url: ""
+  register: result_empty
+  ignore_errors: true
+  failed_when: result_empty.rc == 0
+
+- name: Check results
   ansible.builtin.assert:
     that:
-      - result is successful
+      - result_valid is successful
       - "'microcode_update' in ansible_facts"
       - microcode_update == true
       - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]
+      - "'Error loading YAML' in result_invalid.msg"
+      - "'URL is missing or invalid' in result_empty.msg"
