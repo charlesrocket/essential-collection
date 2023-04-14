@@ -26,6 +26,13 @@
   register: result_empty_url
   ignore_errors: true
 
+- name: 404
+  remote_vars:
+    url: "https://raw.githubusercontent.com/charlesrocket/\
+      essential-collection/trunk/tests/test-vars_404.yml"
+  register: result_404
+  ignore_errors: true
+
 - name: Check results
   ansible.builtin.assert:
     that:
@@ -33,9 +40,11 @@
       - result_invalid is failed
       - result_empty_file is failed
       - result_empty_url is failed
+      - result_404 is failed
       - "'microcode_update' in ansible_facts"
       - microcode_update == true
       - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]
       - "'Error loading YAML' in result_invalid.msg"
       - "'No variables found' in result_empty_file.msg"
       - "'URL is missing or invalid' in result_empty_url.msg"
+      - "'Error 404: Not Found' in result_404.msg"
