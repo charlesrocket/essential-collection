@@ -13,10 +13,17 @@
   register: result_invalid
   ignore_errors: true
 
+- name: Empty file
+  remote_vars:
+    url: "https://raw.githubusercontent.com/charlesrocket/\
+      essential-collection/trunk/tests/test-vars_empty.yml"
+  register: result_empty_file
+  ignore_errors: true
+
 - name: Empty url
   remote_vars:
     url: ""
-  register: result_empty
+  register: result_empty_url
   ignore_errors: true
 
 - name: Check results
@@ -24,9 +31,11 @@
     that:
       - result_valid is successful
       - result_invalid is failed
-      - result_empty is failed
+      - result_empty_file is failed
+      - result_empty_url is failed
       - "'microcode_update' in ansible_facts"
       - microcode_update == true
       - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]
       - "'Error loading YAML' in result_invalid.msg"
-      - "'URL is missing or invalid' in result_empty.msg"
+      - "'No variables found' in result_empty_file.msg"
+      - "'URL is missing or invalid' in result_empty_url.msg"
