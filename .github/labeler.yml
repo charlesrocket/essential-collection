@@ -1,0 +1,17 @@
+---
+
+ci:
+  - '.github/workflows/*'
+
+documentation:
+  - 'docs/**/*'
+
+plugin:
+  - 'plugins/**/*'
+
+role:
+  - 'roles/**/*'
+
+test:
+  - 'molecule/**/*'
+  - 'tests/**/*'
