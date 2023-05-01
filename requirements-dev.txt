@@ -1,7 +1,8 @@
 ansible
+ansible-compat==3.0.2
 ansible-lint
 docker
-molecule
-molecule-plugins[docker]
-molecule-plugins[vagrant]
+molecule==4.0.4
+molecule-docker==2
+molecule-vagrant==2
 python-vagrant
