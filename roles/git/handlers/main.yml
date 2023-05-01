@@ -19,8 +19,8 @@
       {{ item }}/git-credential-{{ item }}"
     remote_src: true
     dest: "{{ git_helper_directory }}/git-credential-{{ item }}"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
+    group: "{{ ansible_user | default(ansible_user_id) }}"
     mode: '0755'
   listen: "deploy git-credential-helper"
   loop: "{{ git_helper | flatten(levels=1) }}"
