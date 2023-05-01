@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2023-05-01
+
+### Bug Fixes
+
+- Use `ansible_user` variable
+
+### CI/CD
+
+- Add pr labeler
+
+### Miscellaneous tasks
+
+- Add pr template
+- Use `molecule-plugins`
+- Add ansible config
+- Version bump
+
+### Testing
+
+- Downgrade molecule
+
 ## [1.2.2] - 2023-04-14
 
 ### Bug Fixes
