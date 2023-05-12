@@ -14,7 +14,6 @@ module: remote_vars
 short_description: Includes variables from remote files
 description:
   - Download variables file from remote hosts and inject it into C(ansible_facts).
-version_added: "1.2.0"
 options:
   url:
     description:
