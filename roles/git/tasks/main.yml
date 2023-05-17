@@ -2,9 +2,9 @@
 
 - name: Set OS variables
   ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found',
-                                    params) }}"
+                                    git_platform) }}"
   vars:
-    params:
+    git_platform:
       files:
         - "{{ ansible_os_family }}.yml"
         - default.yml
