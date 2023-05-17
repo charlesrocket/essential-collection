@@ -17,7 +17,7 @@
 
 - name: Ensure all configured dotfiles are links
   ansible.builtin.command: "ls -F {{ dotfiles_home }}/{{ item }}"
-  register: existing_dotfile_info
+  register: dotfiles_existing_info
   failed_when: false
   check_mode: false
   changed_when: false
@@ -28,7 +28,7 @@
     path: "{{ dotfiles_home }}/{{ dotfiles_files[index] }}"
     state: absent
   when: "'@' not in item.stdout"
-  loop: "{{ existing_dotfile_info.results | flatten(levels=1) }}"
+  loop: "{{ dotfiles_existing_info.results | flatten(levels=1) }}"
   loop_control:
     index_var: index
 

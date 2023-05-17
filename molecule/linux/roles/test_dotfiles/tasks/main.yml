@@ -3,46 +3,46 @@
 - name: "~/.config/mc/ini information"
   ansible.builtin.stat:
     path: "~/.config/mc/ini"
-  register: test_file1
+  register: test_dotfiles_file1
 
 - name: "~/.zshrc information"
   ansible.builtin.stat:
     path: "~/.zshrc"
-  register: test_file2
+  register: test_dotfiles_file2
 
 - name: "~/.xsession information"
   ansible.builtin.stat:
     path: "~/.xsession"
-  register: test_file3
+  register: test_dotfiles_file3
 
 - name: "~/bin/git-credential-netrc information"
   ansible.builtin.stat:
     path: ~/bin/git-credential-netrc
-  register: test_file4
+  register: test_dotfiles_file4
 
 - name: "Check ~/.config/mc/ini"
   ansible.builtin.assert:
     that:
-      - test_file1.stat.exists
-      - test_file1.stat.islnk
-      - test_file1.stat.executable == false
+      - test_dotfiles_file1.stat.exists
+      - test_dotfiles_file1.stat.islnk
+      - test_dotfiles_file1.stat.executable == false
 
 - name: "Check ~/.zshrc"
   ansible.builtin.assert:
     that:
-      - test_file2.stat.exists
-      - test_file2.stat.islnk
-      - test_file2.stat.executable == false
+      - test_dotfiles_file2.stat.exists
+      - test_dotfiles_file2.stat.islnk
+      - test_dotfiles_file2.stat.executable == false
 
 - name: "Check ~/.xsession"
   ansible.builtin.assert:
     that:
-      - test_file3.stat.exists
-      - test_file3.stat.islnk
-      - test_file3.stat.executable
+      - test_dotfiles_file3.stat.exists
+      - test_dotfiles_file3.stat.islnk
+      - test_dotfiles_file3.stat.executable
 
 - name: "Check ~/bin/git-credential-netrc"
   ansible.builtin.assert:
     that:
-      - test_file4.stat.executable
+      - test_dotfiles_file4.stat.executable
     success_msg: Test passed
