@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4] - 2023-06-07
+
+### Documentation
+
+- Update `remote_vars` description
+
+### Miscellaneous tasks
+
+- Version bump
+- Use role prefix
+- Update system variable
+
 ## [1.2.3] - 2023-05-01
 
 ### Bug Fixes
