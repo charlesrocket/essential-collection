@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.5] - 2023-10-03
+
+### CI/CD
+
+- Fix `lint`
+- Update `checkout`
+- Disable fail-fast
+
+### Documentation
+
+- Fix galaxy badge
+- Fix galaxy badge link
+- Add `remote_vars`
+- Fix host key description
+
+### Miscellaneous tasks
+
+- Update dev dependencies
+
+### Testing
+
+- Set python interpreter
+- Fix bsd scenarios (#3)
+
 ## [1.2.4] - 2023-06-07
 
 ### Documentation
@@ -10,7 +34,6 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous tasks
 
-- Version bump
 - Use role prefix
 - Update system variable
 
@@ -29,7 +52,6 @@ All notable changes to this project will be documented in this file.
 - Add pr template
 - Use `molecule-plugins`
 - Add ansible config
-- Version bump
 
 ### Testing
 
@@ -51,7 +73,6 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous tasks
 
-- Version bump
 - Fix test name
 - Drop `display`
 
