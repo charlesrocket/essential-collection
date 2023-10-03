@@ -39,6 +39,7 @@ jobs:
     name: molecule ${{ matrix.distro }}
     runs-on: macos-12
     strategy:
+      fail-fast: false
       matrix:
         distro:
           - freebsd13
@@ -79,6 +80,7 @@ jobs:
     name: molecule ${{ matrix.distro }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         distro:
           - alpine
