@@ -2,6 +2,7 @@
 
 - name: Converge
   hosts: all
+  gather_facts: false  # TODO fix
   vars:
     git_helper: ["netrc"]
     git_repo_shallow: true
@@ -15,7 +16,26 @@
       - .zshrc
 
 
+  pre_tasks:
+    - name: Check operating system
+      ansible.builtin.raw: uname
+      changed_when: false
+      register: target_os
+
+    - name: Install Python on NetBSD
+      ansible.builtin.raw: sudo pkgin -y install python311-*
+      changed_when: false
+      when: target_os.stdout is search("NetBSD")
+
+    - name: Install Python on OpenBSD
+      ansible.builtin.raw: sudo pkg_add python3
+      changed_when: false
+      when: target_os.stdout is search("OpenBSD")
+
   tasks:
+    - name: Gather facts
+      ansible.builtin.gather_facts:
+
     - name: Include git role
       ansible.builtin.include_role:
         name: "charlesrocket.essential.git"
