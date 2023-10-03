@@ -63,3 +63,13 @@ git_helper: ["netrc"]
 
 * Add `git_repo_shallow: true` to use shallow clone.
 * Add `git_repo_force: true` to override local modifications.
+
+## `remote_vars`
+
+Inject variables from remote hosts:
+
+```yaml
+- name: Import user variables
+  charlesrocket.essential.remote_vars:
+    url: https://www.example.com/user_vars.yml
+```
