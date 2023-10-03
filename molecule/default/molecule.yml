@@ -13,8 +13,9 @@ driver:
   parallel: true
 
 platforms:
-  - name: instance
+  - name: instance-${MOLECULE_DISTRO}
     box: "generic/${MOLECULE_DISTRO}"
+    groups: ${MOLECULE_DISTRO}
     interfaces:
       - network_name: public_network
         dev: "virbr0"
@@ -42,6 +43,13 @@ provisioner:
   config_options:
     defaults:
       verbosity: ${MOLECULE_VERBOSITY:-3}
+
+  inventory:
+    group_vars:
+      netbsd9:
+        ansible_python_interpreter: "/usr/pkg/bin/python3"
+      openbsd7:
+        ansible_python_interpreter: "/usr/local/bin/python3"
 
 verifier:
   name: ansible
