@@ -14,7 +14,6 @@
       - .xsession
       - .zshrc
 
-
   tasks:
     - name: Include git role
       ansible.builtin.include_role:

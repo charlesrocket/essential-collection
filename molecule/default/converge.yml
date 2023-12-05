@@ -15,7 +15,6 @@
       - .xsession
       - .zshrc
 
-
   pre_tasks:
     - name: Check operating system
       ansible.builtin.raw: uname
