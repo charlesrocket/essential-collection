@@ -33,6 +33,10 @@ attributes:
     platform:
         platforms: all
 
+deprecated:
+  removed_in: 1.3.0
+  alternative: Use M(whatmoduletouseinstead) instead.
+
 author:
   - k (@charlesrocket)
 '''

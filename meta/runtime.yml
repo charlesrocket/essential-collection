@@ -1,3 +1,10 @@
 ---
 
 requires_ansible: '>=2.13.2'
+
+plugin_routing:
+    action:
+        remote_vars:
+            deprecation:
+                removal_version: 1.3.0
+                warning_text: Use charlesrocket.essential.fetch_vars instead.
