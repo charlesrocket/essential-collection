@@ -6,3 +6,7 @@
     - name: Include test_dotfiles
       ansible.builtin.include_role:
         name: "test_dotfiles"
+
+    - name: Include test_fetch_vars
+      ansible.builtin.include_role:
+        name: "test_fetch_vars"

@@ -1,0 +1,18 @@
+---
+
+argument_specs:
+  main:
+    short_description: Includes variables from remote files
+    description:
+      - >-
+        Download and include variables file from remote hosts.
+
+    author:
+      - charlesrocket
+
+    options:
+      fetch_vars_url:
+        description:
+          - Location of a remote YAML file.
+        type: str
+        required: true

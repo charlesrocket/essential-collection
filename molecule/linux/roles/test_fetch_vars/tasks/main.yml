@@ -1,0 +1,16 @@
+---
+
+- name: Include fetch_vars role
+  ansible.builtin.include_role:
+    name: "charlesrocket.essential.fetch_vars"
+  vars:
+    fetch_vars_url: "https://raw.githubuser\
+      content.com/charlesrocket/\
+      essential-collection/\
+      trunk/tests/test-vars.yml"
+
+- name: "Check variables"
+  ansible.builtin.assert:
+    that:
+      - microcode_update == true
+      - make_config == ["DEVELOPER=yes", "MAKE_JOBS_NUMBER?=16"]

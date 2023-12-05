@@ -1,0 +1,17 @@
+---
+
+- name: Prepare temporary files
+  ansible.builtin.tempfile:
+    state: directory
+  register: temp_vars
+  delegate_to: localhost
+
+- name: Fetch remote variables
+  ansible.builtin.uri:
+    url: "{{ fetch_vars_url }}"
+    dest: "{{ temp_vars.path + '/vars.yaml' }}"
+  delegate_to: localhost
+
+- name: Add remote variables
+  ansible.builtin.include_vars:
+    file: "{{ temp_vars.path + '/vars.yaml' }}"

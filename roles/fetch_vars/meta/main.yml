@@ -1,0 +1,20 @@
+---
+
+galaxy_info:
+  author: charlesrocket
+  description: Remote variable importer
+  role_name: fetch_vars
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: GenericUNIX
+      versions:
+        - all
+    - name: GenericBSD
+      versions:
+        - all
+    - name: GenericLinux
+      versions:
+        - all
+  galaxy_tags:
+    - development
