@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2023-12-05
+
+### Bug Fixes
+
+- Update plugin deprecation
+
+### Documentation
+
+- Fix deprecation message
+- Fix description
+
+### Features
+
+- Deprecate `remote_vars`
+- Add `fetch_vars` role
+
 ## [1.2.5] - 2023-10-03
 
 ### CI/CD
