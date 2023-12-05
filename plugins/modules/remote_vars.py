@@ -12,9 +12,6 @@ DOCUMENTATION = r'''
 ---
 module: remote_vars
 short_description: Includes variables from remote files
-deprecated:
-  removed_in: '1.4.0'
-  alternative: Use M(charlesrocket.essential.fetch_vars) instead.
 description:
   - Download variables file from remote hosts and inject it into C(ansible_facts).
 options:
