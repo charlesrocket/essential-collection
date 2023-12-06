@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2023-12-06
+
+### Bug Fixes
+
+- Deprecate `remote_vars` module
+
+### Documentation
+
+- Add `fetch_vars` description
+
 ## [1.3.0] - 2023-12-05
 
 ### Bug Fixes
