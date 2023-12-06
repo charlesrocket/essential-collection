@@ -69,7 +69,13 @@ git_helper: ["netrc"]
 Inject variables from remote hosts:
 
 ```yaml
-- name: Import user variables
-  charlesrocket.essential.fetch_vars:
-    url: https://www.example.com/user_vars.yml
+- name: Playbook
+  hosts: all
+
+  tasks:
+    - name: Import user variables
+      include_role:
+        name: charlesrocket.essential.fetch_vars
+      vars:
+        fetch_vars_url: https://www.example.com/user_vars.yaml
 ```
