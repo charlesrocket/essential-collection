@@ -4,12 +4,14 @@
   ansible.builtin.tempfile:
     state: directory
   register: temp_vars
+  changed_when: false
   delegate_to: localhost
 
 - name: Fetch remote variables
   ansible.builtin.uri:
     url: "{{ fetch_vars_url }}"
     dest: "{{ temp_vars.path + '/vars.yaml' }}"
+  changed_when: false
   delegate_to: localhost
 
 - name: Add remote variables
