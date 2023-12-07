@@ -11,7 +11,7 @@ __metaclass__ = type
 DOCUMENTATION = r'''
 ---
 module: remote_vars
-short_description: Includes variables from remote files
+short_description: Injects remote variables
 description:
   - Download variables file from remote hosts and inject it into C(ansible_facts).
 options:
