@@ -1,10 +1,12 @@
-name: Deploy docs
+---
+
+name: Docsite
 'on':
   workflow_call:
   workflow_dispatch:
 
 jobs:
-  docsite:
+  docs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
