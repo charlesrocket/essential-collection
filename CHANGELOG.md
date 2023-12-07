@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2023-12-07
+
+### Bug Fixes
+
+- Ignore `tempfile` changes
+
+### CI/CD
+
+- Move `docsite`
+- Fix `cd` syntax
+- Rename `docs`
+- Fix `docsite`
+
+### Documentation
+
+- Fix alternative link
+- Change to code attribute
+- Update short description
+- Link alternative
+
+### Miscellaneous tasks
+
+- Update `antsibull-docs`
+- Fix linter
+
 ## [1.3.1] - 2023-12-06
 
 ### Bug Fixes
