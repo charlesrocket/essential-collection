@@ -36,7 +36,7 @@ attributes:
 deprecated:
   removed_in: 2.0.0
   why: A new role was released with increased security.
-  alternative: Use M(charlesrocket.essential.fetch_vars) instead.
+  alternative: Use R(charlesrocket.essential.fetch_vars) instead.
 
 author:
   - k (@charlesrocket)
