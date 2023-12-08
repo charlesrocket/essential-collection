@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
       - run: pip3 install yamllint
       - run: yamllint .
-      - uses: ansible/ansible-lint-action@main
+      - uses: ansible/ansible-lint@main
 
   ansible-test:
     name: ansible-test
