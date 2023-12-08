@@ -1,6 +1,6 @@
 ---
 
-requires_ansible: '>=2.13.2'
+requires_ansible: '>=2.13.9'
 
 plugin_routing:
     modules:
