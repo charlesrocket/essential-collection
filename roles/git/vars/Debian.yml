@@ -1,9 +1,9 @@
 ---
 
-helper_dependencies:
+git_helper_dependencies:
   - build-essential
 
-dependencies:
+git_dependencies:
   - apt-transport-https
   - gnupg
 

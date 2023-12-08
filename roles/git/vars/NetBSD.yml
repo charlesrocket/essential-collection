@@ -1,9 +1,9 @@
 ---
 
-helper_dependencies:
+git_helper_dependencies:
   - gmake
 
-dependencies:
+git_dependencies:
   - mozilla-rootcerts-openssl
 
 git_package: git

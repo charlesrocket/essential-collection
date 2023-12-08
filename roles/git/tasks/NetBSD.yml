@@ -2,18 +2,18 @@
 
 - name: NetBSD | Install helper dependencies
   community.general.pkgin:
-    name: "{{ helper_dependencies }}"
+    name: "{{ git_helper_dependencies }}"
     state: present
     update_cache: true
-  when: helper_dependencies is defined and git_helper is defined
+  when: git_helper_dependencies is defined and git_helper is defined
   become: true
 
 - name: NetBSD | Install dependencies
   community.general.pkgin:
-    name: "{{ dependencies }}"
+    name: "{{ git_dependencies }}"
     state: present
     update_cache: true
-  when: dependencies is defined
+  when: git_dependencies is defined
   become: true
 
 - name: NetBSD | Install Git

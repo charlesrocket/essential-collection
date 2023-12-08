@@ -2,9 +2,9 @@
 
 - name: OpenBSD | Install helper dependencies
   ansible.builtin.package:
-    name: "{{ helper_dependencies }}"
+    name: "{{ git_helper_dependencies }}"
     state: present
-  when: helper_dependencies is defined and git_helper is defined
+  when: git_helper_dependencies is defined and git_helper is defined
   become: true
 
 - name: OpenBSD | Install Git
