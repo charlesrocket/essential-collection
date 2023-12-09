@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2023-12-09
+
+### Bug Fixes
+
+- Rename internal variables
+
+### CI/CD
+
+- Use `ansible-lint`
+
+### Miscellaneous tasks
+
+- Bump ansible version
+- Bump ansible to 2.15.0
+- Switch ansible to 2.14.0
+
 ## [1.3.2] - 2023-12-07
 
 ### Bug Fixes
