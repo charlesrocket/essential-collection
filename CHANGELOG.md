@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2025-07-21
+
+### Bug Fixes
+
+- Fix dry run
+- Rename register
+
+### Miscellaneous tasks
+
+- Update LICENSE
+- Ignore archives
+
+### Operations
+
+- Drop `vagrant`
+- Fix `release`
+- Fix `docsite`
+
 ## [1.4.0] - 2024-12-19
 
 ### Features
