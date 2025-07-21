@@ -87,7 +87,7 @@ jobs:
       GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
 
   docsite:
-    needs: [ansible-test, docker, vagrant]
+    needs: [ansible-test, docker]
     permissions:
       contents: read
       pages: write
