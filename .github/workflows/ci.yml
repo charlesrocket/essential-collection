@@ -77,7 +77,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
   release:
-    needs: [ansible-test, docker, vagrant]
+    needs: [ansible-test, docker]
     if: |
       github.repository_owner == 'charlesrocket' &&
       startsWith(github.ref, 'refs/tags/')
