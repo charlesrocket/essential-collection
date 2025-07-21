@@ -2,6 +2,7 @@
 
 - name: Add remote variables
   when: fetch_vars_url is not regex("^\/")
+  check_mode: false
   block:
     - name: Prepare temporary location
       ansible.builtin.tempfile:
@@ -25,3 +26,4 @@
   ansible.builtin.include_vars:
     file: "{{ fetch_vars_url }}"
   when: fetch_vars_url is regex("^\/")
+  check_mode: false
