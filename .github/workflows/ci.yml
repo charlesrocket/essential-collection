@@ -5,6 +5,8 @@ name: CI
   pull_request:
   push:
 
+permissions: read-all
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: false
