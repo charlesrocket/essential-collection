@@ -9,7 +9,7 @@
   ansible.builtin.package:
     name: "{{ git_helper_dependencies }}"
     state: present
-  when: git_helper_dependencies is defined and git_helper
+  when: git_helper_dependencies is defined and git_helper is defined
 
 - name: Linux | Install dependencies
   ansible.builtin.package:
