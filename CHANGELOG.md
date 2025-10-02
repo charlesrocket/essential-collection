@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.2] - 2025-10-02
+
+### Bug Fixes
+
+- Fix helper conditional
+
+### Operations
+
+- Bump actions/checkout from 4 to 5
+- Bump actions/upload-pages-artifact from 3 to 4
+- Set permissions
+- Bump actions/setup-python from 5 to 6
+- Bump actions/labeler from 5 to 6
+
 ## [1.4.1] - 2025-07-21
 
 ### Bug Fixes
