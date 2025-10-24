@@ -10,9 +10,9 @@
     path: "~/.zshrc"
   register: test_dotfiles_file2
 
-- name: "~/.xsession information"
+- name: "~/bin/devmode information"
   ansible.builtin.stat:
-    path: "~/.xsession"
+    path: "~/bin/devmode"
   register: test_dotfiles_file3
 
 - name: "~/bin/git-credential-netrc information"
@@ -34,7 +34,7 @@
       - test_dotfiles_file2.stat.islnk
       - test_dotfiles_file2.stat.executable == false
 
-- name: "Check ~/.xsession"
+- name: "Check ~/bin/devmode"
   ansible.builtin.assert:
     that:
       - test_dotfiles_file3.stat.exists
