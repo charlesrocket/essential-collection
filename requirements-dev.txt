@@ -1,4 +1,4 @@
-ansible
+ansible>=13.0.0a1
 ansible-lint
 docker
 molecule
