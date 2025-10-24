@@ -6,7 +6,7 @@ argument_specs:
     description:
       - >-
         Deploy dotfiles from git repositories to a specified
-        target location.
+        target location. Supports C(dfs).
 
     author:
       - charlesrocket
@@ -15,12 +15,10 @@ argument_specs:
       dotfiles_repo:
         description: URL of the target repository to deploy from.
         type: str
-        required: true
 
       dotfiles_repo_version:
         description: Branch to track.
         type: str
-        required: true
 
       dotfiles_repo_accept_newhostkey:
         description:
@@ -50,4 +48,12 @@ argument_specs:
         description: Files to track.
         type: list
         elements: str
-        required: true
+
+      dotfiles_dfs:
+        description: Use C(dfs) to deply dotfiles.
+        type: bool
+        default: false
+
+      dotfiles_dfs_config:
+        description: C(dfs) config file URL.
+        type: str

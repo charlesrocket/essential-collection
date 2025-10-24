@@ -4,3 +4,4 @@ dotfiles_repo_accept_newhostkey: false
 dotfiles_repo_force: false
 dotfiles_repo_local_destination: "~/src/dotfiles"
 dotfiles_home: "~"
+dotfiles_dfs: false

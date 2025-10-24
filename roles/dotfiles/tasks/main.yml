@@ -1,79 +1,93 @@
 ---
 
-- name: Ensure dotfiles repository is cloned locally
-  ansible.builtin.git:
-    repo: "{{ dotfiles_repo }}"
-    dest: "{{ dotfiles_repo_local_destination }}"
-    version: "{{ dotfiles_repo_version }}"
-    force: "{{ dotfiles_repo_force }}"
-    accept_newhostkey: "{{ dotfiles_repo_accept_newhostkey }}"
+- name: DFS
+  when: dotfiles_dfs
   become: false
+  block:
+    - name: Bootstrap config
+      ansible.builtin.command:
+        cmd: "dfs init bootstrap {{ dotfiles_dfs_config }}"
+        creates: "{{ ansible_user_dir }}/.config/dfs.zon"
 
-- name: Retrieve dotfiles facts
-  ansible.builtin.stat:
-    path: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-  register: dotfiles_stat
-  loop: "{{ dotfiles_files | flatten(levels=1) }}"
+    - name: Sync dotfiles
+      ansible.builtin.command:
+        cmd: "dfs sync --direction forward"
+        creates: "{{ ansible_user_dir }}/.local/share/dfs"
 
-- name: Ensure all configured dotfiles are links
-  ansible.builtin.command: "ls -F {{ dotfiles_home }}/{{ item }}"
-  register: dotfiles_existing_info
-  failed_when: false
-  check_mode: false
-  changed_when: false
-  loop: "{{ dotfiles_files | flatten(levels=1) }}"
-
-- name: Remove existing dotfiles file if a replacement is being linked
-  ansible.builtin.file:
-    path: "{{ dotfiles_home }}/{{ dotfiles_files[index] }}"
-    state: absent
-  when: "'@' not in item.stdout"
-  loop: "{{ dotfiles_existing_info.results | flatten(levels=1) }}"
-  loop_control:
-    index_var: index
-
-- name: Prepare dotfiles directories
-  ansible.builtin.file:
-    dest: "{{ dotfiles_home }}/{{ item }}"
-    state: directory
-    mode: '0755'
+- name: Symlink dotfiles
+  when: not dotfiles_dfs
   become: false
-  loop: "{{ dotfiles_files |
-            map('regex_replace', '([^\/]+$)', '') |
-            unique |
-            list }}"
+  block:
+    - name: Ensure dotfiles repository is cloned locally
+      ansible.builtin.git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ dotfiles_repo_local_destination }}"
+        version: "{{ dotfiles_repo_version }}"
+        force: "{{ dotfiles_repo_force }}"
+        accept_newhostkey: "{{ dotfiles_repo_accept_newhostkey }}"
 
-- name: Link dotfiles
-  ansible.builtin.file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
-    dest: "{{ dotfiles_home }}/{{ item.item }}"
-    state: link
-    mode: '0644'
-    follow: false
-  become: false
-  when: not item.stat.executable
-  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
 
-- name: Link dotfiles | directories
-  ansible.builtin.file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
-    dest: "{{ dotfiles_home }}/{{ item.item }}"
-    state: link
-    mode: '0755'
-    follow: false
-  become: false
-  when: item.stat.isdir
-  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
+    - name: Retrieve dotfiles facts
+      ansible.builtin.stat:
+        path: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+      register: dotfiles_stat
+      loop: "{{ dotfiles_files | flatten(levels=1) }}"
 
-- name: Link dotfiles | executables
-  ansible.builtin.file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
-    dest: "{{ dotfiles_home }}/{{ item.item }}"
-    state: link
-    mode: '0755'
-    follow: false
-  become: false
-  when:
-    - item.stat.executable
-    - not item.stat.isdir
-  loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
+    - name: Ensure all configured dotfiles are links
+      ansible.builtin.command: "ls -F {{ dotfiles_home }}/{{ item }}"
+      register: dotfiles_existing_info
+      failed_when: false
+      check_mode: false
+      changed_when: false
+      loop: "{{ dotfiles_files | flatten(levels=1) }}"
+
+    - name: Remove existing dotfiles file if a replacement is being linked
+      ansible.builtin.file:
+        path: "{{ dotfiles_home }}/{{ dotfiles_files[index] }}"
+        state: absent
+      when: "'@' not in item.stdout"
+      loop: "{{ dotfiles_existing_info.results | flatten(levels=1) }}"
+      loop_control:
+        index_var: index
+
+    - name: Prepare dotfiles directories
+      ansible.builtin.file:
+        dest: "{{ dotfiles_home }}/{{ item }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ dotfiles_files |
+                map('regex_replace', '([^\/]+$)', '') |
+                unique |
+                list }}"
+
+    - name: Link dotfiles
+      ansible.builtin.file:
+        src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+        dest: "{{ dotfiles_home }}/{{ item.item }}"
+        state: link
+        mode: '0644'
+        follow: false
+      when: not item.stat.executable
+      loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
+
+    - name: Link dotfiles | directories
+      ansible.builtin.file:
+        src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+        dest: "{{ dotfiles_home }}/{{ item.item }}"
+        state: link
+        mode: '0755'
+        follow: false
+      when: item.stat.isdir
+      loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
+
+    - name: Link dotfiles | executables
+      ansible.builtin.file:
+        src: "{{ dotfiles_repo_local_destination }}/{{ item.item }}"
+        dest: "{{ dotfiles_home }}/{{ item.item }}"
+        state: link
+        mode: '0755'
+        follow: false
+      when:
+        - item.stat.executable
+        - not item.stat.isdir
+      loop: "{{ dotfiles_stat.results | flatten(levels=1) }}"
