@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2025-10-24
+
+### Features
+
+- Add `dfs` support
+
+### Miscellaneous tasks
+
+- Update tags
+
+### Operations
+
+- Bump `ansible` to 13.0.0a1
+
+### Testing
+
+- Update bsd/linux case
+
 ## [1.4.2] - 2025-10-02
 
 ### Bug Fixes
