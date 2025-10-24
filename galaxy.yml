@@ -2,7 +2,7 @@
 
 namespace: charlesrocket
 name: essential
-version: 1.4.2
+version: 1.5.0
 readme: README.md
 description: Essential Ansible roles
 authors:
