@@ -79,3 +79,7 @@ Inject variables from remote hosts:
       vars:
         fetch_vars_url: https://www.example.com/user_vars.yaml
 ```
+
+## Contributing
+
+Patches are accepted via [Codeberg](https://codeberg.org/charlesrocket/essential-collection) or e-mail.
