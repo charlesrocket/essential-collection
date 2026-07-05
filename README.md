@@ -1,6 +1,7 @@
 # essential-collection
 [![galaxy](https://img.shields.io/badge/dynamic/json?style=flat&label=galaxy&prefix=v&url=https://galaxy.ansible.com/api/v3/collections/charlesrocket/essential/&query=highest_version.version)](https://galaxy.ansible.com/ui/repo/published/charlesrocket/essential/)
-[![molecule](https://github.com/charlesrocket/essential_collection/actions/workflows/ci.yml/badge.svg?branch=trunk&event=push)](https://github.com/charlesrocket/essential_collection/actions/workflows/ci.yml)
+[![CI](https://codeberg.org/charlesrocket/essential-collection/badges/workflows/ci.yml/badge.svg?branch=trunk)](https://codeberg.org/charlesrocket/essential-collection/actions)
+[![docs](https://github.com/charlesrocket/essential_collection/actions/workflows/docsite.yml/badge.svg?branch=trunk&event=push)](https://github.com/charlesrocket/essential_collection/actions/workflows/docsite.yml)
 [![codecov](https://codecov.io/gh/charlesrocket/essential-collection/branch/trunk/graph/badge.svg)](https://codecov.io/gh/charlesrocket/essential-collection)
 
 ### Install
