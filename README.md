@@ -30,9 +30,9 @@ collections:
 ### Set variables
 
 ```yaml
-dotfiles_repo: "https://github.com/charlesrocket/dotfiles.git" # dotfiles
-dotfiles_repo_version: openbsd # branch to track
-dotfiles_repo_accept_newhostkey: false # StrictHostKeyChecking=accept-new
+dotfiles_repo: "https://codeberg.org/charlesrocket/dotfiles" # dotfiles
+dotfiles_repo_version: trunk # branch to track
+dotfiles_repo_accept_newhostkey: true # StrictHostKeyChecking=accept-new
 dotfiles_repo_force: false # force git clone
 dotfiles_repo_local_destination: "~/git/dotfiles" # local repo path
 dotfiles_home: "~" # local dotfiles path
