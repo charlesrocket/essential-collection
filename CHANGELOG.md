@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2026-07-19
+
+### Bug Fixes
+
+- Accept key by default
+
+### Documentation
+
+- Add `Contributing`
+- Update ci badges
+
+### Operations
+
+- Bump actions/checkout from 5 to 6
+- Bump actions/deploy-pages from 4 to 5
+- Bump actions/upload-pages-artifact from 4 to 5
+- Bump actions/checkout from 6 to 7
+- Update actions
+- Remove docker jobs
+- Move `galaxy` job
+
+### Build
+
+- Move repository
+- Move issue tracker
+- Ignore `.forgejo`
+
 ## [1.5.0] - 2025-10-24
 
 ### Features
