@@ -21,6 +21,7 @@ repository: https://codeberg.org/charlesrocket/essential-collection
 documentation: https://charlesrocket.github.io/essential-collection/
 issues: https://codeberg.org/charlesrocket/essential-collection/issues
 build_ignore:
+  - .forgejo
   - .github
   - .gitignore
   - codecov.yml
